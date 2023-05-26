@@ -1,0 +1,47 @@
+<div class="main posts-index">
+  <div class="search-form">
+    <%= form_with(url: "/images/search", method: :get, local: true, class: "search-form") do |f| %>
+      <%= f.text_field :keyword, value: @keyword %>
+      <%= f.submit "検索" %>
+    <% end %>
+  </div>
+
+  <div class="image-container">
+    <% @images.each do |image| %>
+      <div class="images-index-items">
+
+        <div class="image-left">
+          <img src="<%= "/user_images/#{image.user.image_name}" %>">
+        </div>
+
+        <div class="image-right">
+          <div class="image-user-name">
+            <%= link_to(image.user.name, "/users/#{image.user.id}") %>
+          </div>
+        </div>
+
+        <div class="image-contents">
+          <%= image_tag(image.ctype.to_s, :size => "400x266") %>
+          <div calss="image-title">
+            <%= link_to( image.image_name, "/images/#{image.id}") %>
+          </div>
+        </div>
+
+        <div class="post-like">
+          <% if Like.find_by(user_id: @current_user.id, image_id: image.id) %>
+            <%= link_to("/likes/#{image.id}/image_destroy", method: :post) do %>
+              <span class="fa fa-heart liked-btn"></span>
+            <% end %>
+          <% else %>
+            <%= link_to("/likes/#{image.id}/image_create", method: :post) do %>
+              <span class="fa fa-heart unliked-btn"></span>
+            <% end %>
+          <% end %>
+          <%= Like.where(image_id: image.id).count  %>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
+
+</div>

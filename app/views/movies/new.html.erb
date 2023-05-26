@@ -1,0 +1,40 @@
+<div class="main posts-new">
+<div class="container">
+  <div class="form-heading">MV</div>
+
+    <%= form_with model: @movie do |form| %>
+      <% if @movie.errors.any? %>
+        <div style="color: red">
+          <h2><%= pluralize(movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+          <ul>
+            <% @movie.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+
+        </div>
+      <% end %>
+    <% end %>
+
+  <div class="form">
+  <div class="form-body">
+    <%= form_with model: @movie, local: true do |f| %>
+
+      <%= f.label :MV %>
+      <%= f.file_field :video, accept: "video/*" %>
+      
+      <div>
+        <%= f.label :タイトル %>
+        <%= f.text_field :body, :size => 30 %>
+      </div>
+      <div>
+        <%= f.label :概要欄 %>
+          <%= f.text_field :content, :size => 300 %>
+      </div>
+      <%= f.submit "投稿" %>
+    <% end %>
+  </div>
+  </div>
+</div>
+</div>

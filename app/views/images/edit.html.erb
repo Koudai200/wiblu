@@ -1,0 +1,25 @@
+<div class="main posts-new">
+  <div class="container">
+    <h1 class="form-heading">編集する</h1>
+  </div>
+
+  <%= form_tag("/images/#{@image.id}/update") do %>
+    <div class="form">
+      <div class="form-body">
+        <% @image.errors.full_messages.each do |message| %>
+          <div class="form-error">
+            <%= message %>
+          </div>
+        <% end %>
+
+        <%= image_tag(@image.ctype.to_s, :size => "300x200") %>
+        <p>タイトル</p>
+        <textarea name="image_name"><%= @image.image_name %></textarea>
+        <p>概要欄</p>
+        <textarea name="body"><%= @image.body %></textarea>
+        <input type="submit" value="保存">
+
+      </div>
+    </div>
+  <% end %>
+</div>

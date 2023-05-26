@@ -1,0 +1,40 @@
+<div class="main posts-index">
+  <div class="search-form">
+    <%= form_with url: "/movies/search", method: :get, local: true, class: "search-form" do |f| %>
+      <%= f.text_field :keyword, value: @keyword %>
+      <%= f.submit "検索" %>
+    <% end %>
+  </div>
+
+  <div class="movie-container">
+    <% @movies.each do |movie| %>
+      <div class="movies-index-item">
+        <div class="post-left">
+          <img src="<%= "/user_images/#{movie.user.image_name}" %>">
+        </div>
+        <div class="movie-right">
+          <div class="post-user-name">
+            <%= link_to(movie.user.name, "/users/#{movie.user.id}") %>
+          </div>
+        </div>
+          <div class="movie-contents">
+            <%= video_tag(movie.video.to_s, loop: true, autoplay: true, muted: true, controls: true) %>
+            <%= link_to( movie.body, "/movies/#{movie.id}" ) %>
+          </div>
+
+        <div class="movie-like">
+          <% if Like.find_by(user_id: @current_user.id, movie_id: movie.id) %>
+            <%= link_to("/likes/#{movie.id}/movie_destroy", method: :post) do %>
+              <span class="fa fa-heart liked-btn"></span>
+            <% end %>
+          <% else %>
+            <%= link_to("/likes/#{movie.id}/movie_create", method: :post) do %>
+              <span class="fa fa-heart unliked-btn"></span>
+            <% end %>
+          <% end %>    
+          <%= Like.where(movie_id: movie.id).count %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

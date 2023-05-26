@@ -1,0 +1,168 @@
+<div class="main user-show">
+  <div class="container">
+    <div class="user">
+      <img src="<%= "/user_images/#{@user.image_name}" %>">
+      <h2><%= @user.name %></h2>
+      <p><%= @user.email %></p>
+      <% if @user.id == @current_user.id %>
+        <%= link_to("編集", "/users/#{@user.id}/edit") %>
+      <% end %>
+    </div>
+    
+    <ul class="user-tabs">
+      <li><%= link_to("投稿", "/users/#{@user.id}") %></li>
+      <li class="active"><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
+    </ul>
+
+    <ul class="user-tabs">
+      <li class="active"><a href="#tab1">歌詞</a></li>
+      <li><a href="#tab2">画像</a></li>
+      <li><a href="#tab3">音楽</a></li>
+      <li><a href="#tab4">動画</a></li>
+    </ul>
+    
+    <div class="tab-content" id="tab1">
+    <% @likes.includes(:post, :post => :user).each do |like| %>
+      <% post = like.post %>
+      
+      <% if post && post.user %>
+        <div class="users-index-item">
+          <div class="user-left">
+            <img src="<%= "/user_images/#{post.user.image_name}" %>">
+          </div>
+          <div class="user-right">
+            <div class="user-name">
+              <%= link_to(post.user.name, "/users/#{post.user.id}") %>
+            </div>
+            <div class="post-content">
+              <%= link_to(post.content, "/posts/#{post.id}") %>
+            </div>
+            <div class="post-like">
+              <% if @current_user && Like.find_by(user_id: @current_user.id, post_id: post.id) %>
+                <%= link_to("/likes/#{post.id}/destroy", method: :post) do %>
+                  <span class="fa fa-heart liked-btn"></span>
+                <% end %>
+              <% else %>
+                <%= link_to("/likes/#{post.id}/create", method: :post) do %>
+                  <span class="fa fa-heart unliked-btn"></span>
+                <% end %>
+              <% end %>
+              <%= Like.where(post_id: post.id).count %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>    
+    </div>
+
+    <div class="tab-content" id="tab2">
+    <% @likes.includes(:image, :image => :user).each do |like| %>
+      <% image = like.image %>
+      
+      <% if image && image.user %>
+        <div class="users-index-item">
+          <div class="user-left">
+            <img src="<%= "/user_images/#{image.user.image_name}" %>">
+          </div>
+          <div class="user-right">
+            <div class="user-name">
+              <%= link_to(image.user.name, "/users/#{image.user.id}") %>
+            </div>
+            <div class="image-contents">
+              <%= image_tag(image.ctype.to_s, :size => "400x266") %>
+              <div class="image-title">
+                <%= link_to( image.image_name, "/images/#{image.id}") %>
+              </div>
+            </div>
+            <div class="post-like">
+              <% if @current_user && Like.find_by(user_id: @current_user.id, image_id: image.id) %>
+                <%= link_to("/likes/#{image.id}/image_destroy", method: :post) do %>
+                  <span class="fa fa-heart liked-btn"></span>
+                <% end %>
+              <% else %>
+                <%= link_to("/likes/#{image.id}/image_create", method: :post) do %>
+                  <span class="fa fa-heart unliked-btn"></span>
+                <% end %>
+              <% end %>
+              <%= Like.where(image_id: image.id).count %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>    
+    </div>
+
+    <div class="tab-content" id="tab3">
+    <% @likes.includes(:music, :music => :user).each do |like| %>
+      <% music = like.music %>
+      
+      <% if music && music.user %>
+        <div class="users-index-item">
+          <div class="user-left">
+            <img src="<%= "/user_images/#{music.user.image_name}" %>">
+          </div>
+          <div class="user-right">
+            <div class="user-name">
+              <%= link_to(music.user.name, "/users/#{music.user.id}") %>
+            </div>
+            <div class="post-content">
+              <audio src="<%= "#{music.file}" %>" controls="">
+                <a src="<%= "#{music.file}" %>">ダウンロード</a>
+              </audio>
+            </div>
+            <%= link_to(music.body, "/musics/#{music.id}" ) %>
+            <div class="post-like">
+              <% if @current_user && Like.find_by(user_id: @current_user.id, music_id: music.id) %>
+                <%= link_to("/likes/#{music.id}/music_destroy", method: :post) do %>
+                  <span class="fa fa-heart liked-btn"></span>
+                <% end %>
+              <% else %>
+                <%= link_to("/likes/#{music.id}/music_create", method: :post) do %>
+                  <span class="fa fa-heart unliked-btn"></span>
+                <% end %>
+              <% end %>
+              <%= Like.where(music_id: music.id).count %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>    
+    </div>
+
+    <div class="tab-content" id="tab4">
+    <% @likes.includes(:movie, :movie => :user).each do |like| %>
+      <% movie = like.movie %>
+      
+      <% if movie && movie.user %>
+        <div class="users-index-item">
+          <div class="user-left">
+            <img src="<%= "/user_images/#{movie.user.image_name}" %>">
+          </div>
+          <div class="user-right">
+            <div class="user-name">
+              <%= link_to(movie.user.name, "/users/#{movie.user.id}") %>
+            </div>
+            <div class="movie-contents">
+              <%= video_tag(movie.video.to_s, loop: true, autoplay: true, muted: true, controls: true) %>
+              <%= link_to( movie.body, "/movies/#{movie.id}" ) %>
+            </div>
+            <div class="post-like">
+              <% if @current_user && Like.find_by(user_id: @current_user.id, movie_id: movie.id) %>
+                <%= link_to("/likes/#{movie.id}/movie_destroy", method: :post) do %>
+                  <span class="fa fa-heart liked-btn"></span>
+                <% end %>
+              <% else %>
+                <%= link_to("/likes/#{movie.id}/movie_create", method: :post) do %>
+                  <span class="fa fa-heart unliked-btn"></span>
+                <% end %>
+              <% end %>
+              <%= Like.where(movie_id: movie.id).count %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>    
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="main posts-index">
+  <div class="search-form">
+    <%= form_with url: "/musics/search", method: :get, local: true, class: "search-form" do |f| %>
+      <%= f.text_field :keyword, value: @keyword %>
+      <%= f.submit "検索" %>
+    <% end %>
+  </div>
+  <div class="music-container">
+      <div id="musics">
+        <% @musics.each do |music| %>
+          <div class="musics-index-item">
+            <div class="music-left">
+              <img src="<%= "/user_images/#{music.user.image_name}" %>">
+              <div class="music-user-name">
+                <%= link_to(music.user.name, "/users/#{music.user.id}") %>
+              </div>
+            </div>
+
+            <div class="music-content">
+              <div class="music-item">
+                <audio src="<%= "#{music.file}" %>" controls="">
+                  <a src="<%= "#{music.file}" %>">ダウンロード</a>
+                </audio>
+                <%= link_to(music.body, "/musics/#{music.id}" ) %>
+
+                <div class="music-like">
+                  <% if Like.find_by(user_id: @current_user.id, music_id: music.id) %>
+                    <%= link_to("/likes/#{music.id}/music_destroy", {method: "post"}) do %>
+                      <span class="fa fa-heart liked-btn"></span>
+                    <% end %>
+                  <% else %>
+                    <%= link_to("/likes/#{music.id}/music_create", {method: "post"}) do %>
+                      <span class="fa fa-heart unliked-btn"></span>
+                    <% end %>
+                  <% end %>
+                  <%= Like.where(music_id: music.id).count %>
+                </div>
+              </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+  </div>
+</div>

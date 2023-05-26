@@ -1,0 +1,52 @@
+<div class="main">
+  <div class="chat-room">
+  <% @messages.each do |message| %>
+    <% if message.user_id == @current_user.id %>
+      <!-- 吹き出し（右）の始まり -->
+      <div class="sb-box">
+        <div class="sb-side sb-side-right">
+          <div class="sb-txt sb-txt-right">
+            <p><%= message.body %></p>
+          </div>
+          <div class="room-time">
+            <%= message.created_at.strftime('%Y/%m/%d %H:%M') %>
+          </div>
+        </div>
+      </div>
+      <!-- 吹き出し（右）の終わり -->
+    <% else %>
+      <!-- 吹き出し（左）の始まり -->
+      <div class="sb-box">
+        <div class="icon-img icon-img-left">
+          <%= image_tag("/user_images/#{message.user.image_name}") %>
+        </div>
+        <div class="icon-name icon-name-left"><%= message.user.name %></div>
+        <div class="sb-side sb-side-left">
+          <div class="sb-txt sb-txt-left">
+            <div class="syas">
+              <%= message.body %>
+            </div>
+          </div>
+          <div class="room-time">
+            <%= message.created_at.strftime('%Y/%m/%d %H:%M') %>
+          </div>
+        </div>
+      </div>
+      <!-- 吹き出し（左）の終わり -->
+    <% end %>
+  <% end %>
+
+    <div class="chat-form-box">
+      <%= form_for @message do |f| %>
+        <div class="chat-form-group">
+            <%= f.text_field :body, placeholder: "メッセージを入力..." %>
+          <%= f.hidden_field :room_id, value: @room.id %>
+          <div class="send-button">
+            <%= f.submit "送信する" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>

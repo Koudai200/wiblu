@@ -1,0 +1,112 @@
+/* images/index ================================ */
+.image-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  justify-items: center;
+  }
+  
+  .images-index-items {
+  padding: 3%;
+  overflow: hidden;
+  box-shadow: 0px 2px 5px #c1ced7;
+  background-color: white;
+  }
+  
+  .image-contents img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  }
+  
+  .image-left img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 6px #c1ced7;
+  }
+  
+  .image-user-name {
+  margin: 13px 30px 30px;
+  font-weight: 600;
+  font-size: 20px;
+  }
+  
+  .image-left {
+  float: left;
+  width: 10%;
+  }
+  
+  .image-right {
+  float: left;
+  width: 90%;
+  padding-left: 10px;
+  text-align: left;
+  }
+  
+  /* images/show ================================ */
+  .images-show-item {
+    padding: 30px;
+    background-color: white;
+    box-shadow: 0 2px 6px #c1ced7;
+    overflow: hidden;
+  }
+  .images-show .image-left img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: none;
+  }
+
+
+  .images-show form {
+  display: inline;
+  }
+  
+  .images-show-item p {
+  font-size: 24px;
+  margin: 20px 0;
+  }
+  
+  .image-time {
+  color: #8899a6;
+  margin-bottom: 10px;
+  }
+  
+  .unliked-btn {
+  color: #8899a6;
+  }
+  
+  .liked-btn {
+  color: #ff2581;
+  }
+  
+  .fa {
+  font-size: 16px;
+  margin-right: 3px;
+  }
+  
+  .post-menus {
+  float: right;
+  }
+  
+  .post-menus a, .post-menus input {
+  color: #8899a6;
+  text-decoration: underline;
+  font-size: 14px;
+  }
+  
+  /* posts/new ================================ */
+  .posts-new textarea {
+  font-size: 20px;
+  padding: 10px;
+  min-height: 140px;
+  border: 1px solid rgb(216, 218, 223);
+  resize: none;
+  }
+  
+  .posts-new textarea::placeholder {
+  font-size: 24px;
+  opacity: 0.5;
+  }
