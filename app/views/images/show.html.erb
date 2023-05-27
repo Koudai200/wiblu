@@ -22,11 +22,11 @@
         <%= l @image.created_at, format: :long %>
       </div>
       <% if Like.exists?(user_id: @current_user.id, image_id: @image.id) %>
-        <%= link_to("/likes/#{h(@image.id)}/image_destroy", method: :post) do %>
+        <%= link_to("/likes/#{h(@image.id)}/image_destroy", method: :post, class: "like-button liked", data: { resource_id: @image.id, resource_type: "image" }) do %>
           <span class="fa fa-heart liked-btn"></span>
         <% end %>
       <% else %>
-        <%= link_to("/likes/#{h(@image.id)}/image_create", method: :post) do %>
+        <%= link_to("/likes/#{h(@image.id)}/image_create", method: :post, class: "like-button unliked", data: { resource_id: @image.id, resource_type: "image" }) do %>
           <span class="fa fa-heart unliked-btn"></span>
         <% end %>
       <% end %>
