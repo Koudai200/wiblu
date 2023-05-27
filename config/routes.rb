@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   # root "articles#index"
   root "users#login"
 
-  get "signup", to: "users#create"
+  get "signup", to: "users#new"
+  get "users/create", to: "users#create"
   get "login", to: "users#login_form"
   post "login", to: "users#login"
   get "logout", to: "users#logout"
