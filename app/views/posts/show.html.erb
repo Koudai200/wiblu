@@ -16,22 +16,22 @@
         <%= @post.body %>
       </div>
       <div class="post-time">
-      <%= @post.created_at.strftime("%Y年%m月%d日 %H:%M:%S") %>
+        <%= @post.created_at.strftime("%Y年%m月%d日 %H:%M:%S") %>
       </div>
       <% if Like.find_by(user_id: @current_user.id, post_id: @post.id) %>
-      <%= link_to("/likes/#{@post.id}/destroy", method: :post) do %>
-        <span class="fa fa-heart liked-btn"></span>
+        <%= link_to(destroy_like_path(@post.id), method: :post, class: "like-button liked", data: { resource_id: @post.id, resource_type: "post" }) do %>
+          <span class="fa fa-heart liked-btn"></span>
+        <% end %>
+      <% else %>
+        <%= link_to(create_like_path(@post.id), method: :post, class: "like-button unliked", data: { resource_id: @post.id, resource_type: "post" }) do %>
+          <span class="fa fa-heart unliked-btn"></span>
+        <% end %>
       <% end %>
-    <% else %>
-      <%= link_to("/likes/#{@post.id}/create", method: :post) do %>
-        <span class="fa fa-heart unliked-btn"></span>
-      <% end %>
-    <% end %>
       <%= @likes_count %>
       <% if @post.user_id == @current_user.id %>
         <div class="post-menus">
-          <%= link_to("編集", "/posts/#{@post.id}/edit") %>
-          <%= link_to("削除", "/posts/#{@post.id}/destroy", {method: "post"}) %>
+          <%= link_to("編集", edit_post_path(@post.id)) %>
+          <%= link_to("削除", post_path(@post.id), method: :delete) %>
         </div>
       <% end %>
     </div>

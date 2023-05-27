@@ -9,7 +9,7 @@
         </div>
       <% end %>
 
-      <%= form_for @user, url: "/users/create" do |f| %>
+      <%= form_for @user, url: "/users/signup" do |f| %>
         <p>ユーザー名</p>
         <%= f.text_field :name, class: "form-control", value: @user.name %>        
         <p>メールアドレス</p>
