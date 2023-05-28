@@ -48,7 +48,6 @@ gem "mariadb"
 
 gem "pry-rails"
 
-gem 'mariadb'
 
 group :production do
   gem 'unicorn', '5.4.1'
