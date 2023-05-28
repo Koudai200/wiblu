@@ -44,17 +44,18 @@ gem "audiojs-rails"
 
 gem "mini_magick"
 
+gem "mariadb", "~> 1.1", require: false
+
 gem "pry-rails"
 
 group :production do
   gem 'unicorn', '5.4.1'
 end
 
-
 gem 'dotenv-rails', groups: [:development, :test]
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -67,7 +68,7 @@ gem "bootsnap", require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "debug", platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
@@ -82,7 +83,7 @@ group :development do
 end
 
 group :test do
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  # Use system testing
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
