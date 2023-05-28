@@ -33,8 +33,8 @@
       <%= Like.where(image_id: @image.id).count %>
       <% if @image.user_id == @current_user.id %>
         <div class="post-menus">
-          <%= link_to("編集", edit_image_path(@image)) %>
-          <%= link_to("削除", image_path(@image), method: :delete) %>
+          <%= link_to("編集", "/images/#{@image.id}/edit") %>
+          <%= link_to("削除", "/images/#{@image.id}/destroy") %>
         </div>
       <% end %>
     </div>
