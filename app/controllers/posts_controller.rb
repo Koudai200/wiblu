@@ -15,7 +15,8 @@ class PostsController < ApplicationController
       @post = Post.new(
         content: params[:content],
         user_id: @current_user.id,
-        body: params[:body]
+        body: params[:body],
+        title: params[:title]
       )
       if @post.save
         flash[:notice] = "投稿を作成しました"
@@ -39,6 +40,7 @@ class PostsController < ApplicationController
       @post = Post.find_by(id: params[:id])
       @post.content = params[:content]
       @post.body = params[:body]
+      @post.title = params[:title]
       if @post.save
         flash[:notice] = "投稿を編集しました"
         redirect_to("/posts/index")
