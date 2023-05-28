@@ -7,6 +7,10 @@
       <div class="post-user-name">
         <%= link_to(@user.name, "/users/#{@user.id}") %>
       </div>
+      <p>タイトル</p>
+      <div>
+        <%= @post.title %>
+      </div>
       <p>歌詞</p>
       <div>
         <%= @post.content %>
