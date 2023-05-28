@@ -44,6 +44,8 @@ gem "audiojs-rails"
 
 gem "mini_magick"
 
+gem "mariadb"
+
 gem "pry-rails"
 
 group :production do
