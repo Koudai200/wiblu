@@ -1,6 +1,6 @@
 <div class="main posts-new">
 <div class="container">
-  <div class="form-heading">画像</div>
+  <div class="form-heading">イラスト</div>
 
     <%= form_with model: @image do |form| %>
       <% if @image.errors.any? %>
@@ -21,7 +21,7 @@
   <div class="form-body">
     <%= form_with model: @image, local: true do |f| %>
 
-      <%= f.label :画像 %>
+      <%= f.label :イラスト %>
       <%= f.file_field :ctype, accept: "image/*" %>
       
       <div>
