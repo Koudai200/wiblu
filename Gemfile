@@ -44,11 +44,12 @@ gem "audiojs-rails"
 
 gem "mini_magick"
 
-gem "mariadb"
-
 gem "pry-rails"
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/main
 group :production do
   gem 'unicorn', '5.4.1'
 end
