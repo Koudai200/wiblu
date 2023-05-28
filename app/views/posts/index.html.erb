@@ -18,7 +18,12 @@
           </div>
         </div>
         <div class="post-content">
-          <%= link_to(post.content, "/posts/#{post.id}") %>
+          <div>
+            <%= link_to(post.title, "/posts/#{post.id}") %>
+          </div>
+          <div>
+            <%= link_to(post.content, "/posts/#{post.id}") %>
+          </div>
         </div>
         <div class="post-like">
           <% if Like.find_by(user_id: @current_user.id, post_id: post.id) %>
@@ -30,7 +35,7 @@
               <span class="fa fa-heart unliked-btn"></span>
             <% end %>
           <% end %>
-          <%= post.likes_count %>
+          <%= Like.where(post_id: post.id).count %>
         </div>
       </div>
     <% end %>

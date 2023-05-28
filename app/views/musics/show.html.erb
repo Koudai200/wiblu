@@ -35,11 +35,11 @@
         <% end %>
       <% end %>
 
-      <%= @music.likes_count %>
+      <%= Like.where(music_id: @music.id).count %>
       <% if @music.user_id == @current_user.id %>
         <div class="post-menus">
-          <%= link_to("編集", edit_music_path(@music.id)) %>
-          <%= link_to("削除", music_path(@music.id), method: :delete, data: { confirm: "本当に削除しますか？" }) %>
+          <%= link_to("編集", "/musics/#{@music.id}/edit") %>
+          <%= link_to("削除","/musics/#{@music.id}/destroy") %>
         </div>
       <% end %>
     </div>

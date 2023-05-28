@@ -24,11 +24,11 @@
 
         <div class="movie-like">
           <% if Like.find_by(user_id: @current_user.id, movie_id: movie.id) %>
-            <%= link_to("/likes/#{movie.id}/movie_destroy", method: :post, class: "like-button liked", data: { resource_id: @movie.id, resource_type: "movie" }) do %>
+            <%= link_to("/likes/#{movie.id}/movie_destroy", method: :post, class: "like-button liked", data: { resource_id: movie.id, resource_type: "movie" }) do %>
               <span class="fa fa-heart liked-btn"></span>
             <% end %>
           <% else %>
-            <%= link_to("/likes/#{movie.id}/movie_create", method: :post, class: "like-button unliked", data: { resource_id: @movie.id, resource_type: "movie" }) do %>
+            <%= link_to("/likes/#{movie.id}/movie_create", method: :post, class: "like-button unliked", data: { resource_id: movie.id, resource_type: "movie" }) do %>
               <span class="fa fa-heart unliked-btn"></span>
             <% end %>
           <% end %>    
