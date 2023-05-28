@@ -32,7 +32,7 @@
       <% end %>
     <% end %>
 
-    <%= @likes_count %>
+    <%= Like.where(movie_id: @movie.id).count %>
     <% if @movie.user_id == @current_user.id %>
       <div class="post-menus">
         <%= link_to("編集", "/movies/#{@movie.id}/edit") %>
