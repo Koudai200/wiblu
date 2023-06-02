@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root "users#login"
 
   get "signup", to: "users#new"
-  get "users/create", to: "users#create"
+  post "users/create", to: "users#create"
   get "login", to: "users#login_form"
   post "login", to: "users#login"
   get "logout", to: "users#logout"
