@@ -44,7 +44,7 @@ gem "audiojs-rails"
 
 gem "mini_magick"
 
-gem "mariadb", "~> 1.1"
+gem "mysql2", ">= 0.5.3", "< 0.7.0"
 
 gem "pry-rails"
 
