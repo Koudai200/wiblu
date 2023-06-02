@@ -5,19 +5,19 @@ root_path = File.expand_path('../../', __FILE__)
 worker_processes 2
 
 # アプリケーションの設置されているディレクトリを指定
-working_directory "/var/www/wiblu"
+working_directory "/var/www/rails/wiblu"
 
 # プロセスIDの保存先を指定
-pid "/var/www/wiblu/tmp/pids/unicorn.pid"
+pid "/var/www/rails/wiblu/tmp/pids/unicorn.pid"
 
 # ポート番号を指定
-listen "/var/www/wiblu/tmp/sockets/unicorn.sock"
+listen "/var/www/rails/wiblu/tmp/sockets/unicorn.sock"
 
 # エラーのログを記録するファイルを指定
-stderr_path "/var/www/wiblu/log/unicorn.stderr.log"
+stderr_path "/var/www/rails/wiblu/log/unicorn.stderr.log"
 
 # 通常のログを記録するファイルを指定
-stdout_path "/var/www/wiblu/log/unicorn.stdout.log"
+stdout_path "/var/www/rails/wiblu/log/unicorn.stdout.log"
 
 #応答時間を待つ上限時間を設定
 timeout 30
