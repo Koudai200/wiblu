@@ -66,7 +66,7 @@ Rails.application.routes.draw do
   resources :messages, only: [:create]
   resources :rooms, only: [:create, :index, :show]
   
-  get ".env", to: proc { [404, {}, ["Not Found"]] }
+ 
 
 end
 
