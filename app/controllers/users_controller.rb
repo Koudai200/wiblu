@@ -44,20 +44,25 @@ class UsersController < ApplicationController
   end
     
   def create
-    @user = User.new(
-      name: params[:name],
-      email: params[:email],
-      image_name: "default_user.jpg",
-      assword: params[:password],
-      agreement: params[:agreement]
-    )
-    if @user.save
-      session[:user_id] = @user.id
-      flash[:notice] = "ユーザー登録が完了しました"
-      redirect_to("/users/#{@user.id}")
+    @user = User.new(user_params)
+    if @user.email.present? # メールアドレスが空でないことを確認
+      if @user.save
+        session[:user_id] = @user.id
+        flash[:notice] = "ユーザー登録が完了しました"
+        redirect_to user_path(@user)
+      else
+        render :new
+      end
     else
-      render("users/new")
+      flash.now[:alert] = "メールアドレスを入力してください"
+      render :new
     end
+  end
+  
+  private
+  
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :agreement)
   end
     
   def edit
