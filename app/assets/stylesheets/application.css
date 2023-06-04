@@ -142,6 +142,23 @@ header {
   color: black
 }
 
+.header-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 6px #c1ced7;
+  margin-top: 13px;
+  margin-right: 10px;
+}
+
+.header-icon img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 /* side ================================= */
 .side-contents {
   display: flex;
@@ -213,17 +230,6 @@ header {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-
-  /* 画面幅が狭い場合に適用されるスタイル */
-  @media (max-width: 768px) {
-  .toggle-button {
-  display: block; /* メニューを隠している時に表示 */
-  }
-  
-  .side-menus {
-  display: none; /* デフォルトでは非表示 */
-   }
   }
 
   /* top ================================ */
@@ -331,3 +337,72 @@ header {
     font-size: 14px;
   }
   
+/* スマホサイズのみ適用されるスタイル */
+@media (max-width: 768px) {
+  .toggle-button {
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .toggle-button .bar {
+    background-color: #333;
+    width: 100%;
+    height: 3px;
+    margin-bottom: 5px;
+    transition: all 0.3s ease;
+  }
+
+  /* メニュー表示時のスタイル */
+  .toggle-button.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .toggle-button.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .toggle-button.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  /* メニューのスタイル */
+  .side-menus {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 2px 5px #888888;
+    z-index: 5;
+  }
+
+  .side-menus.active {
+    display: block;
+  }
+
+  .side-menus ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .side-menus li {
+    margin-bottom: 10px;
+  }
+
+  .side-menus a {
+    color: #2d3133;
+    font-size: 15px;
+    text-decoration: none;
+    display: block;
+    padding: 5px;
+  }
+}
