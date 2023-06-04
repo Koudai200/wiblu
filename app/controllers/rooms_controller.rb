@@ -10,14 +10,12 @@ class RoomsController < ApplicationController
 
   def index
     # ログインユーザー所属ルームID取得
-    current_entries = current_user.entries
-    my_room_id = []
-    current_entries.each do |entry|
-      my_room_id << entry.room.id
-    end
-    # 自分のroom_idでuser_idが自分じゃないのを取得
-    @another_entries = Entry.where(room_id: my_room_id).where.not(user_id: current_user.id)
+    my_room_ids = @current_user.entries.pluck(:room_id)
+  
+    # 自分のroom_idでuser_idが自分じゃないエントリーを取得
+    @another_entries = Entry.where(room_id: my_room_ids).where.not(user_id: @current_user.id)
   end
+  
 
   def show
     @room = Room.find(params[:id])
