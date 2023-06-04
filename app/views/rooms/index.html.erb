@@ -1,22 +1,124 @@
-<% @another_entries.each do |entry| %>
-  <% message = entry.room.messages.last %>
-  <%= link_to room_path(entry.room) do %>
-    <div class="card">
-      <div class="card-body">
-        <div class="d-flex">
-          <div class="chat-avatar">
-            <%= link_to user_path(entry.user) do %>
-              <%= image_tag entry.user.avatar_image %>
-            <% end %>
-          </div>
-          <div class="chat-user-name">
-            <%= entry.user.display_name %>
-          </div>
-          <div class="chat-text">
-            <%= message.body if message %>
-          </div>
-        </div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wiblu</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', 'posts', 'images', 'movies', 'musics', 'rooms', 'contacts', 'users', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="<%= asset_path('user-tab-script.js') %>"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  </head>
+
+  <body>
+    <div class="wrapper">
+    <header>
+      <div class="header-logo">
+        <% if @current_user %>
+          <button class="toggle-button">
+            <span class="bar" onclick="location.href='/contacts'">お問い合わせ</span>
+            <span class="bar" onclick="location.href='/riyoukiyaku'">利用規約</span>
+            <span class="bar" onclick="location.href='/puraibasiporisi'">プライバシーポリシー</span>
+          </button>
+          <div class="logo">Wiblu</div>
+        <% else %>
+          <%= link_to("Wiblu", "/") %>
+        <% end %>
       </div>
+
+      <ul class="header-menus">
+        <% if @current_user %>
+          <li>
+            <div class="header-icon">
+              <img src="<%= "/user_images/#{@current_user.image_name}" %>">
+            </div>
+          </li>
+          <li>
+            <%= link_to("ログアウト", "/logout", {method: "post"}) %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to("Wibluとは", "/about") %>
+          </li>
+          <li>
+           <%= link_to("新規登録", "/signup") %>
+          </li>
+          <li>
+            <%= link_to("ログイン", "/login") %>
+          </li>
+        <% end %>
+      </ul>
+    </header>
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    
+    <% if @current_user %>
+    <div class="side-contents">
+      <aside>
+        <div class="sidebar">
+          <nav class="side-menus">
+            <ul>
+              <li class="font-bold">
+                <a>v 投稿一覧</a>
+              </li>
+              <li>
+                <a href="/posts/index">歌詞</a>
+              </li>
+              <li>
+                <a href="/musics">音楽</a>
+              </li>
+              <li>
+                <a href="/images">イラスト</a>
+              </li>
+              <li>
+                <a href="/movies" >MV</a>
+              </li>
+
+              <li class="font-bold">
+                <a>v 新規投稿</a>
+              </li>
+              <li>
+                <a href="/posts/new">歌詞</a>
+              </li>
+              <li>
+                <a href="/musics/new">音楽</a>
+              </li>
+              <li>
+                <a href="/images/new">イラスト</a>
+              </li>
+              <li class="border-bottom">
+                <a href="/movies/new">MV</a>
+              </li>
+              <li>
+                <a href="/rooms/index">メッセージ</a>
+              </li>
+              <li class="border-bottom">
+                <a href="/users/index">ユーザー一覧</a>
+              </li>
+              <li>
+                <a href="/contacts">お問い合わせ</a>
+              </li>
+              <li>
+                <a href="/riyoukiyaku">利用規約</a>
+              </li>
+              <li>
+                <a href="/puraibasiporisi" class="overflow-ellipsis">プライバシーポリシー</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </aside>
+      <% end %>
     </div>
-  <% end %>
-<% end %>
+    <div class="body-wrapper">
+      <%= yield %>
+    </div>
+    </div>
+  </body>
+</html>
