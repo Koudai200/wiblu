@@ -3,12 +3,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  root "users#login"
+  
 
   get "signup", to: "users#new"
   post "users/create", to: "users#create"
-  get "login", to: "users#login_form"
-  get "login", to: "users#login"
+  get "/", to: "users#login_form"
+  get "login" => "users#login"
   get "logout", to: "users#logout"
   get "users/index" => "users#index"
   get "users/:id" => "users#show"
@@ -64,9 +64,8 @@ Rails.application.routes.draw do
   end
 
   resources :messages, only: [:create]
+  get "rooms/index" => "rooms#index"
+  get "rooms/:id" => "rooms#show"
   resources :rooms, only: [:create, :index, :show]
-  
- 
-
 end
 
