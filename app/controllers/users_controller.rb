@@ -58,12 +58,6 @@ class UsersController < ApplicationController
       render :new
     end
   end
-  
-  private
-  
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :agreement)
-  end
     
   def edit
     @user = User.find_by(id: params[:id])
@@ -122,6 +116,12 @@ class UsersController < ApplicationController
       flash[:notice] = "権限がありません"
       redirect_to("/posts/index")
     end
+  end
+  
+    private
+  
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :agreement)
   end
   
 end
