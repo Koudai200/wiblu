@@ -32,10 +32,9 @@
       <ul class="header-menus">
         <% if @current_user %>
           <li>
-            <%= link_to(@current_user.name, "/users/#{@current_user.id}") %>
-          </li>
-          <li>
-            <%= link_to("ユーザー一覧", "/users/index") %>
+            <div class="header-icon">
+              <img src="<%= "/user_images/#{@current_user.image_name}" %>">
+            </div>
           </li>
           <li>
             <%= link_to("ログアウト", "/logout", {method: "post"}) %>
@@ -95,6 +94,12 @@
               </li>
               <li class="border-bottom">
                 <a href="/movies/new">MV</a>
+              </li>
+              <li>
+                <a href="/rooms/index">メッセージ</a>
+              </li>
+              <li class="border-bottom">
+                <a href="/users/index">ユーザー一覧</a>
               </li>
               <li>
                 <a href="/contacts">お問い合わせ</a>
