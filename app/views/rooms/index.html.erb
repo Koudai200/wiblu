@@ -10,7 +10,7 @@
             </div>
           <% end %>
           <div class="user-right">
-            <%= message.user.name %>
+            <%= link_to(message.user.name, room_path(entry.room)) %>
           </div>
         <% end %>
       </div>
