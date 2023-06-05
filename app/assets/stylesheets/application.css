@@ -208,7 +208,7 @@ header {
 
   .Menu {
     position: absolute;
-    margin-top: 48px;
+    margin-top: 9px;
     left: 0;
     display: flex;
     flex-direction: column;
@@ -235,6 +235,14 @@ header {
   }
 
   .Menu-HamburgerBtn {
+    display: none;
+  }
+
+  .CloseButton {
+    display: none;
+  }
+  
+  .CloseButton-Icon {
     display: none;
   }
 }
