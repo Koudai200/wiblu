@@ -42,13 +42,28 @@
     min-height: 1vh;
   }
 
+  @media screen and (min-width: 768px) {
   .main {
     position: absolute;
     top: 64px;
     width: 85%;
+    right: 0;
     height: auto;
     min-height: 100%;
     background-color: #f5f5f5;
+  }
+}
+
+  @media screen and (max-width: 767px) {
+    .main {
+      position: absolute;
+      top: 64px;
+      width: 100%;
+      right: 0;
+      height: auto;
+      min-height: 100%;
+      background-color: #f5f5f5;
+    }
   }
 
   .container {
@@ -100,9 +115,10 @@
 /* ヘッダー ================================ */
 header {
   height: 64px;
-  position: absolute;
+  position: fixed!important;
   z-index: 1;
   width: 100%;
+  background: transparent;
   background-color: white;
   box-shadow: 0px 2px 5px #888888;
 }
@@ -110,16 +126,18 @@ header {
 /* ヘッダーロゴのスタイル */
 .header-logo {
   float: left;
+  padding-top: 20px;
   padding-left: 30px;
   color: black;
   font-size: 22px;
-  line-height: 64px;
+  line-height: 35px;
 }
 
 .header-logo a {
   color: black;
-  font-size: 22px;
-  padding: 10px;
+  font-size: 15px;
+  padding: 5px;
+  padding-left: 20px;
   }
 
 /* メニューのスタイル */
@@ -159,111 +177,189 @@ header {
   object-fit: cover;
 }
 
-/* side ================================= */
-.side-contents {
-  display: flex;
-  justify-content: space-between;
-  }
-  
-  .sidebar {
-    width: 240px;
-    background-color: white;
-  }
-  
-  .body-wrapper {
-    float: right;
-    width: 85%;
-  }
-  
-  /* ハンバーガーメニューのアイコンスタイル */
-  .toggle-button {
-  display: none; /* デフォルトでは非表示 */
-  }
-  
-  .bar {
+/* メニューの共通スタイル */
+.Menu {
+  list-style-type: none;
+  padding: 0;
+}
+
+.Menu-Group-Item {
+  margin-bottom: 0;
+}
+
+.Menu-Group-Item-Link {
   display: block;
-  width: 25px;
-  height: 3px;
-  background-color: #333;
-  margin-bottom: 5px;
-  }
-  
-  /* メニューのスタイル */
-  .side-menus {
-    margin-top: 65px;
-    display: inline-block;
-    padding: 5px 10px 0 20px;
+  padding: 0;
+  text-decoration: none;
+  color: #000;
+  font-size: 14px; /* 文字サイズを調整 */
+}
+
+.Menu-Group-Separator{
+  border-top: 1px solid #ccc;
+  padding-top: 0;
+}
+
+/* パソコンの画面幅 */
+@media screen and (min-width: 768px) {
+  .checkbox {
+    display: none;
   }
 
-  .side-menus ul {
+  .Menu {
+    position: absolute;
+    margin-top: 48px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    width: 140px; /* サイドメニューの幅 */
+    max-height: calc(100vh - 100px); /* メニューの最大の高さ（ヘッダーの高さを考慮） */
+    background-color: white; /* サイドメニューの背景色 */
+    /* その他のスタイルを設定 */
+  }
+  
+  .header-logo {
+    position: relative;
+  }
+
+  .Menu-CloseBtn {
+    display: none;
+  }
+
+  .Menu-Group {
+    display: block;
+  }
+
+  .logo {
+    display: block;
+  }
+
+  .Menu-HamburgerBtn {
+    display: none;
+  }
+}
+
+/* スマートフォンの画面幅 */
+@media screen and (max-width: 767px) {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .logo {
+    padding-left: 44px;
+  }
+  
+  .span-container,
+  .checkbox {
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #000;
+  }
+  
+  .checkbox {
+    display: none;
+  }
+  
+  .span-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    left: 0;
+    margin-left: 10px;
+  }
+  
+  .span-container span {
+    width: 100%;
+    height: 1.5px;
+    background: black;
+    transition: all 250ms ease-out;
+    transform-origin: 0 0;
+  }
+
+  .checkbox:checked ~ .Menu {
+    display: block;
+  }
+  
+  .checkbox:checked ~ .span-container span:nth-last-child(1) {
+    transform: rotate(-45deg) translate(-1px, 0px);
+  }
+  
+  .checkbox:checked ~ .span-container span:nth-last-child(2) {
+    transform: rotate(0deg) scale(0.2, 0.2);
+    opacity: 0;
+  }
+  
+  .checkbox:checked ~ .span-container span:nth-last-child(3) {
+    transform: rotate(45deg) translate(0px, -1px);
+  }
+  
+  .Menu-Group {
     list-style-type: none;
     padding: 0;
     margin: 0;
   }
   
-  .side-menus li {
-    margin-bottom: 10px;
+  .Menu-Group-Item {
+    margin-bottom: 0.5rem;
   }
   
-  .sidebar a {
-  color: #2d3133;
-  font-size: 15px;
-  text-decoration: none;
-  display: block;
-  padding: 5px;
+  .Menu-Group-Item-Link {
+    text-decoration: none;
+    color: white;
+    font-size: clamp(1.4rem, 2.4vw, 2.2rem);
   }
-
-  .side-menus a:hover {
-    background-color: #ddd;
+  
+  .Menu-Group-Item-Link:hover {
+    color: salmon;
   }
-
-  .font-bold {
-    font-weight: bold;
-    font-size: 20px;
+  
+  .Menu-Group-Separator {
+    margin: 1rem 0;
+    border: none;
+    border-top: 1px solid white;
   }
-
-  .border-bottom {
-    border-bottom: 1px solid #ccc;
-  }
-
-  .overflow-ellipsis {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  /* top ================================ */
-  .top-main {
-    padding: 200px 0 100px;
-    text-align: center;
-    position: absolute;
+  
+  .Menu {
+    display: none;
+    left: 0;
     top: 0;
     width: 100%;
-    height: auto;
-    min-height: 100%;
+    height: 100vh;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    background: white;
+    transition: all 250ms ease-out;
+    transform: translateX(0);
+    overflow-y: auto;
+  }
+
+  .CloseButton {
+    position: absolute;
+    padding: 1rem;
+    left: 1rem;
+  }
+  
+  .CloseButton-Icon {
     color: white;
-    background-color: #3ecdc6;
-    background-repeat: no-repeat;
-    background-position: center 50%;
-    background-size: cover;
-    background-image: url("/top.jpg");
+    font-size: 2rem;
+    cursor: pointer;
   }
-  
-  .top-message {
-    position: relative;
-  }
-  
-  .top-main h2 {
-    font-size: 70px;
-    font-weight: 500;
-    line-height: 1.3;
-    -webkit-font-smoothing: antialiased;
-    margin-bottom: 20px;
-  }
-  
-  .top-main p {
-    font-size: 24px;
-  }
+
+}
+
 
  /* フォーム================================ */
  .form {
@@ -336,73 +432,3 @@ header {
     border-radius: 0 0 2px 2px;
     font-size: 14px;
   }
-  
-/* スマホサイズのみ適用されるスタイル */
-@media (max-width: 768px) {
-  .toggle-button {
-    display: block;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    z-index: 10;
-  }
-
-  .toggle-button .bar {
-    background-color: #333;
-    width: 100%;
-    height: 3px;
-    margin-bottom: 5px;
-    transition: all 0.3s ease;
-  }
-
-  /* メニュー表示時のスタイル */
-  .toggle-button.active .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-
-  .toggle-button.active .bar:nth-child(2) {
-    opacity: 0;
-  }
-
-  .toggle-button.active .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
-
-  /* メニューのスタイル */
-  .side-menus {
-    display: none;
-    position: absolute;
-    top: 64px;
-    left: 0;
-    width: 100%;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 0px 2px 5px #888888;
-    z-index: 5;
-  }
-
-  .side-menus.active {
-    display: block;
-  }
-
-  .side-menus ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .side-menus li {
-    margin-bottom: 10px;
-  }
-
-  .side-menus a {
-    color: #2d3133;
-    font-size: 15px;
-    text-decoration: none;
-    display: block;
-    padding: 5px;
-  }
-}
