@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "logout" => "users#logout"
   get "users/index" => "users#index"
   get "users/:id" => "users#show"
+  post "users/destroy" => "users#destroy"
 
   resources :users, except: [:show] do
     get :likes, on: :member
