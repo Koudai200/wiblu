@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post "users/create", to: "users#create"
   get "/", to: "users#login_form"
   post "login" => "users#login"
-  get "logout", to: "users#logout"
+  post "logout", to: "users#logout"
   get "users/index" => "users#index"
   get "users/:id" => "users#show"
 
