@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user, {only: [:index, :show, :edit, :update]}
+  before_action :authenticate_user, {only: [:index, :show, :edit, :update, :destroy]}
   before_action :forbid_login_user, {only: [:new, :create, :login_form, :login]}
   before_action :ensure_correct_user, {only: [:edit, :update]}
     
@@ -120,9 +120,13 @@ class UsersController < ApplicationController
   
     def destroy
     @user = User.find_by(id: params[:id])
-    @user.destroy
-    flash[:notice] = "投稿を削除しました"
-    redirect_to("/")
+    if @user.destroy
+      flash[:notice] = "アカウントを削除しました"
+      redirect_to("/users/login_form")
+    else
+      flash[:notice] = "アカウントの削除に失敗しました"
+      render("users/show")
+    end
   end
   
     private
