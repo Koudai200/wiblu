@@ -46,7 +46,7 @@ class ImagesController < ApplicationController
         def destroy
           @image.destroy
           flash[:notice] = "投稿を削除しました"
-          redirect_to("/images/index")
+          redirect_to("/images")
         end
         
         def ensure_correct_user
