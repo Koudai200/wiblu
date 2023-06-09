@@ -121,10 +121,12 @@
         <% if @current_user %>
           <li>
             <div class="header-icon">
-              <img src="<%= "/user_images/#{@current_user.image_name}" %>">
+              <%= link_to("/users/#{@current_user.id}") do %>
+                <img src="<%= "/user_images/#{@current_user.image_name}" %>">
+              <% end %>
             </div>
           </li>
-                  <li>
+        <li>
           <%= link_to("アカウント削除", "/destroy", {method: "post"}) %>
         </li>
           <li>
