@@ -88,6 +88,7 @@
 
 .user-tabs li {
   float: left;
+  padding: 4% 9%;
 }
 
 .user-tabs li.active {
@@ -100,7 +101,6 @@
 
 .user-tabs a {
   display: inline-block;
-  padding: 16px 41.6px;
   color: #afb6bf;
 }
 
