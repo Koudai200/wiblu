@@ -1,11 +1,4 @@
 <div class="main posts-index">
-  <div class="search-form">
-    <%= form_with url: "/movies/search", method: :get, local: true, class: "search-form" do |f| %>
-      <%= f.text_field :keyword, value: @keyword %>
-      <%= f.submit "検索" %>
-    <% end %>
-  </div>
-
   <div class="movie-container">
     <% @movies.each do |movie| %>
       <div class="movies-index-item">
