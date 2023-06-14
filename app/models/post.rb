@@ -6,7 +6,7 @@ class Post < ApplicationRecord
     has_many :likes
 
     def self.search(keyword)
-      where(["content like?", "%#{keyword}%"])
+      where("body LIKE :keyword OR title LIKE :keyword OR content LIKE :keyword", keyword: "%#{keyword}%")
     end
 
     def user
