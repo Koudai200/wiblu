@@ -78,7 +78,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 15px;
+    margin-right: 45px;
   }
 
   .search-form {
@@ -104,7 +104,7 @@
   }
 
   .search-form input {
-    width: 200px;
+    width: 150px;
     height: 40px;
     padding: 5px 10px 5px 10px;
     border: none;
