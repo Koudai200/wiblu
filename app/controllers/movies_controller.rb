@@ -75,12 +75,6 @@ class MoviesController < ApplicationController
     params.require(:movie).permit(:body, :video, :content).merge(user_id: @current_user.id)
   end
 
-  def search
-    @movies = Movie.search(params[:keyword])
-    @keyword = params[:keyword]
-    render "index"
-  end
-
   def ensure_correct_user
     if @current_user.id != params[:id].to_i
       flash[:notice] = "権限がありません"
