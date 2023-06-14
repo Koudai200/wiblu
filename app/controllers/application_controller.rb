@@ -19,4 +19,23 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def search
+        @keyword = params[:keyword]
+
+        @users = User.search(@keyword)
+        render("users/index") and return if @users.present?
+          
+        @images = Image.search(@keyword)
+        render("images/index") and return if @images.present?
+          
+        @musics = Music.search(@keyword)
+        render("musics/index") and return if @musics.present?
+          
+        @posts = Post.search(@keyword)
+        render("posts/index") and return if @posts.present?
+          
+        @movies = Movie.search(@keyword)
+        render("movies/index") and return if @movies.present?          
+    end
+
 end
