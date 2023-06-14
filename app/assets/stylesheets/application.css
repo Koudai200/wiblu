@@ -78,7 +78,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 45px;
+    margin-right: 30px;
   }
 
   .search-form {
@@ -151,7 +151,7 @@ header {
   line-height: 64px;
   font-size: 13px;
   color: black;
-  padding-left: 15px;
+  padding-left: 10px;
 }
 
 .header-menus a{
