@@ -95,6 +95,11 @@
                   <span>ユーザー一覧</span>
                 </a>
               </li>
+              <li class="Menu-Group-Item">
+                <a class="Menu-Group-Item-Link" href="/logout", {method: "post"}>
+                  <span>ログアウト</span>
+                </a>
+              </li>
               <hr class="Menu-Group-Separator">
               <li class="Menu-Group-Item">
                 <a class="Menu-Group-Item-Link" href="/contacts">
@@ -134,9 +139,6 @@
                   <img src="<%= "/user_images/#{ERB::Util.html_escape(@current_user.image_name)}" %>">
                 <% end %>
               </div>
-            </li>
-            <li>
-              <%= link_to("ログアウト", "/logout", {method: "post"}) %>
             </li>
           <% else %>
             <li>
