@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  
+
+  get "/search", to: "application#search"  
 
   get "signup", to: "users#new"
   post "users/create", to: "users#create"
@@ -17,7 +18,6 @@ Rails.application.routes.draw do
   resources :users, except: [:show] do
     get :likes, on: :member
   end
-  get "users/search", to: "users#search"
 
   get "riyoukiyaku" => "home#riyoukiyaku"
   get "puraibasiporisi" => "home#puraibasiporisi"
@@ -25,7 +25,6 @@ Rails.application.routes.draw do
   get "contacts" => "contact#new"
   post "contacts/create" => "contact#create"
   
-  get "posts/search" => "posts#search"
   get "posts/index" => "posts#index"
   get "posts/new" => "posts#new"
   get "posts/:id/edit" => "posts#edit"
@@ -43,21 +42,18 @@ Rails.application.routes.draw do
   get "likes/:movie_id/movie_create" => "likes#movie_create", as: "movie_create_like"
   get "likes/:movie_id/movie_destroy" => "likes#movie_destroy", as: "movie_destroy_like"
 
-  get "images/search" => "images#search"
   post "images/:id/update" => "images#update", as: "update_image"
   get "images/:id/destroy" => "images#destroy", as: "destroy_image"
   resources :images do
     resources :image_events, only: [:index]
   end
 
-  get "musics/search" => "musics#search"
   post "musics/:id/update" => "musics#update", as: "update_music"
   get "musics/:id/destroy" => "musics#destroy", as: "destroy_music"
   resources :musics do
     resources :music_events, only: [:index]
   end
 
-  get "movies/search" => "movies#search"
   post "movies/:id/update" => "movies#update", as: "update_movie"
   get "movies/:id/destroy" => "movies#destroy", as: "destroy_movie"
   resources :movies do

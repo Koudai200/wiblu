@@ -65,10 +65,5 @@ class ImagesController < ApplicationController
           params.require(:image).permit(:image_name, :ctype, :body).merge(user_id: @current_user.id)
         end
 
-        def search
-          @images = Image.search(params[:keyword])
-          @keyword = params[:keyword]
-          render "index"
-        end
 
 end
