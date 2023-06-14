@@ -47,3 +47,22 @@
     }, 2000);
     
   });
+
+  document.addEventListener("DOMContentLoaded", function() {
+    var searchIcon = document.getElementById("search-icon");
+    var searchContainer = document.getElementById("search-container");
+    var searchForm = document.querySelector(".search-form");
+
+    searchIcon.addEventListener("click", function() {
+      searchContainer.classList.toggle("active");
+      if (searchContainer.classList.contains("active")) {
+        searchForm.querySelector("input").focus();
+      }
+    });
+
+    document.addEventListener("click", function(event) {
+      if (!searchContainer.contains(event.target) && event.target !== searchIcon) {
+        searchContainer.classList.remove("active");
+      }
+    });
+  });
