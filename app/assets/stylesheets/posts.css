@@ -11,6 +11,11 @@
   box-shadow: 0px 2px 5px #c1ced7;
   background-color: white;
   }
+
+  .post-tilte {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
   
   .post-left img {
   width: 60px;
