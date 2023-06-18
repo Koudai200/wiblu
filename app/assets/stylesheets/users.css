@@ -88,7 +88,8 @@
 
 .user-tabs li {
   float: left;
-  padding: 16px 35px;
+  padding: 16px;
+  width: 25%;
 }
 
 .user-tabs li.active {
