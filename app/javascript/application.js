@@ -53,8 +53,7 @@
     var searchContainer = document.getElementById("search-container");
     var searchForm = document.querySelector(".search-form");
 
-    searchIcon.addEventListener("click", function(event) {
-      event.preventDefault(); // タッチイベントのデフォルトアクションをキャンセル
+    searchIcon.addEventListener("click", function() {
       searchContainer.classList.toggle("active");
       if (searchContainer.classList.contains("active")) {
         searchForm.querySelector("input").focus();
