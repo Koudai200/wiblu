@@ -20,9 +20,9 @@
         <div class="header-logo">
           <% if @current_user %>
 
-          　<div class="logo">
-             <%= link_to("Wiblu", "https://wiblu-blog.net") %>
-          　</div>
+          <div class="logo">
+            <%= link_to("Wiblu", "https://wiblu-blog.net") %>
+          </div>
           <input type="checkbox" class="checkbox" id="menu">
           <label for="menu" class="span-container">
             <span></span>
@@ -121,14 +121,12 @@
             </ul>
           </nav>
           <% else %>
-          　　<div class="logo">
-               <%= link=to("Wiblu", "https://wiblu-blog.net") %>
-          　　</div>
+            <div class="logo">
+              <%= link_to("Wiblu", "https://wiblu-blog.net") %>
+            </div>
           <% end %>
         </div>
-
-
-        <ul class="header-menus">
+        <ul class="header-menus"> 
           <% if @current_user %>
             <li>
               <div class="search" id="search-container">
@@ -140,12 +138,10 @@
                   </div>
               </div>
             </li>
-            <li>
-              <div class="header-icon">
-                <%= link_to("/users/#{@current_user.id}") do %>
-                  <img src="<%= "/user_images/#{ERB::Util.html_escape(@current_user.image_name)}" %>">
-                <% end %>
-              </div>
+            <li class="header-icon">
+              <%= link_to("/users/#{@current_user.id}") do %>
+              <img src="<%= "/user_images/#{ERB::Util.html_escape(@current_user.image_name)}" %>">
+              <% end %>
             </li>
           <% else %>
             <li>
