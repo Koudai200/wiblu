@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   get "signup", to: "users#new"
   post "users/create", to: "users#create"
+  post "users/:id/update" => "users#update"
   get "/", to: "users#login_form"
   post "login" => "users#login"
   get "logout" => "users#logout"
