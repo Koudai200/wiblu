@@ -1,6 +1,6 @@
 <div class="main posts-new">
 <div class="container">
-  <div class="form-heading">MV</div>
+  <div class="form-heading">映像</div>
 
     <%= form_with model: @movie do |form| %>
       <% if @movie.errors.any? %>
@@ -21,7 +21,7 @@
   <div class="form-body">
     <%= form_with model: @movie, local: true do |f| %>
 
-      <%= f.label :MV %>
+      <%= f.label :映像 %>
       <%= f.file_field :video, accept: "video/*" %>
       
       <div>
@@ -30,7 +30,7 @@
       </div>
       <div>
         <%= f.label :概要欄 %>
-          <%= f.text_field :content, :size => 300 %>
+          <%= f.text_area :content, :size => 300 %>
       </div>
       <%= f.submit "投稿" %>
     <% end %>
