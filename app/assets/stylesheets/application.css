@@ -179,7 +179,7 @@ header {
   color: black
 }
 
-.header-icon {
+.header-icon img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -187,13 +187,6 @@ header {
   box-shadow: 0 2px 6px #c1ced7;
   margin-top: 13px;
   margin-right: 10px;
-}
-
-.header-icon img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
 }
 
 /* パソコンの画面幅 */
