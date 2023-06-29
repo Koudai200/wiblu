@@ -36,7 +36,7 @@ class ImagesController < ApplicationController
         def update
             
             if @image.update(image_params)
-              flash[:notice] = "ユーザー情報を編集しました"
+              flash[:notice] = "投稿を編集しました"
               redirect_to("/images/#{@image.id}")
             else
               render("images/edit")
