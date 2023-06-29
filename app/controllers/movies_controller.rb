@@ -32,7 +32,7 @@ class MoviesController < ApplicationController
 
     respond_to do |format|
       if @movie.save
-        format.html { redirect_to movie_url(@movie), notice: 'MVを投稿しました。' }
+        format.html { redirect_to movie_url(@movie), notice: '映像を投稿しました。' }
         format.json { render :show, status: :created, location: @movie }
       else
         format.html { render :new, status: :unprocessable_entity}
@@ -46,7 +46,7 @@ class MoviesController < ApplicationController
   def update
     respond_to do |format|
       if @movie.update(movie_params)
-        format.html { redirect_to movie_url(@movie), notice: 'MVを更新しました。' }
+        format.html { redirect_to movie_url(@movie), notice: '映像を更新しました。' }
         format.json { render :show, status: :ok, location: @movie }
       else
         format.html { render :edit }
