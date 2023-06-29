@@ -14,7 +14,7 @@
 
       <%= image_tag(@image.ctype.to_s, size: "300x200") %>
       <p>タイトル</p>
-      <%= form.text_area :image_name %>
+      <%= form.text_field :image_name %>
       <p>概要欄</p>
       <%= form.text_area :body %>
       <%= form.submit "保存" %>
