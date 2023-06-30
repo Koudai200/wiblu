@@ -1,25 +1,21 @@
 <div class="main posts-index">
-  <div class="image-container">
+  <div class="post-container">
     <% @images.each do |image| %>
-      <div class="images-index-items">
-
-        <div class="image-left">
+      <div class="posts-index-item">
+        <div class="post-left">
           <img src="<%= "/user_images/#{image.user.image_name}" %>">
         </div>
-
-        <div class="image-right">
-          <div class="image-user-name">
+        <div class="post-right">
+          <div class="post-user-name">
             <%= link_to(image.user.name, "/users/#{image.user.id}") %>
           </div>
         </div>
-
         <div class="image-contents">
           <%= image_tag(image.ctype.to_s, :size => "400x266") %>
-          <div calss="image-title">
+          <div calss="post-title">
             <%= link_to( image.image_name, "/images/#{image.id}") %>
           </div>
         </div>
-
         <div class="post-like">
           <% if Like.find_by(user_id: @current_user.id, image_id: image.id) %>
             <%= link_to("/likes/#{image.id}/image_destroy", method: :post, class: "like-button liked", data: { resource_id: image.id, resource_type: "image" }) do %>
@@ -32,9 +28,7 @@
           <% end %>
           <%= Like.where(image_id: image.id).count  %>
         </div>
-
       </div>
     <% end %>
   </div>
-
 </div>
