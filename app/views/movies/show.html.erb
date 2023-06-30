@@ -36,7 +36,6 @@
     <% if @movie.user_id == @current_user.id %>
       <div class="post-menus">
         <%= link_to("編集", "/movies/#{@movie.id}/edit") %>
-        <%= link_to("削除", "/movies/#{@movie.id}/destroy") %>
       </div>
     <% end %>
     </div>
