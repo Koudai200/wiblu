@@ -1,56 +1,15 @@
 /* musics/index ================================ */
 
-.music-container {
-  max-width: 100%;
-  margin: 60px auto;
-  padding: 0 15px;
-}
-
-.music-content {
-  display: flex;
-  flex-direction: column;
-}
-
-.musics-index-item {
-  padding: 20px 30px;
-  background-color: white;
-  overflow: hidden;
-  box-shadow: 0 2px 6px #c1ced7;
-}
-
-.music-left img,
-.music-left .music-user-name {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.music-left img {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 2px 6px #c1ced7;
-}
-
-.music-left .music-user-name {
-  margin: 10px 20px;
-  font-weight: bold;
-  font-size: 30px;
+.music-title {
+  padding-left: 10px;
+  padding-bottom: 15px;
 }
 
 .music-item {
-  display: flex;
   align-items: center;
   font-size: 15px;
-  margin-top: 10px;
 }
 
 .music-item audio {
-  margin-left: 10px;
-  margin-right: 40px;
-}
-
-.music-like {
-  display: inline-block;
-  margin-left: 30px;
+  margin-bottom: 10px;
 }
