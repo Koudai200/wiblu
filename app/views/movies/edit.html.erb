@@ -1,7 +1,6 @@
 <div class="main posts-new">
   <div class="container">
     <h1 class="form-heading">編集</h1>
-    
     <div class="form">
       <%= form_for @movie, url: movie_path(@movie), method: :patch do |f| %>
         <div class="form-body">
@@ -28,8 +27,8 @@
         </div>
       <% end %>
     </div>
-  </div>
-  <div class="destroy">
-    <%= link_to("削除", "/movies/#{@movie.id}/destroy", "data-confirm" => "本当に削除しますか？") %>
+    <div class="destroy">
+      <%= link_to("削除", "/movies/#{@movie.id}/destroy", "data-confirm" => "本当に削除しますか？") %>
+    </div>
   </div>
 </div>
