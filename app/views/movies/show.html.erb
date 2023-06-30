@@ -1,21 +1,21 @@
 <div class="main posts-show">
   <div class="container">
-    <div class="posts-show-item">
-      <div class="post-user-name">
-        <img src="<%= "/user_images/#{@user.image_name}" %>">
-        <%= link_to(@user.name, "/users/#{@user.id}") %>
+    <div class="images-show-item">
+      <div class="post-left">
+        <%= image_tag("/user_images/#{h(@user.image_name)}") %>
+      </div>
+      <div class="post-right">
+        <div class="post-user-name">
+          <%= link_to(@user.name, "/users/#{@user.id}") %>
+        </div>
       </div>
       <div class="movie-contents">
         <%= video_tag(@movie.video.to_s, loop: true, autoplay: true, muted: true, controls: true) %>
         <div class="image-body">
           <p>タイトル</p>
-          <div>
-            <%= @movie.body %>
-          </div>
+          <div><%= @movie.body %></div>
           <p>概要欄</p>
-          <div>
-            <%= @movie.content %>
-          </div>
+          <div><%= @movie.content %></div>
         </div>
       </div>
       <div class="post-time">
@@ -36,7 +36,7 @@
     <% if @movie.user_id == @current_user.id %>
       <div class="post-menus">
         <%= link_to("編集", "/movies/#{@movie.id}/edit") %>
-        <%= link_to("削除", "/movies/#{@movie.id}/destroy", {method: "post"}) %>
+        <%= link_to("削除", "/movies/#{@movie.id}/destroy") %>
       </div>
     <% end %>
     </div>
