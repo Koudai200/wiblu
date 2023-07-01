@@ -20,7 +20,9 @@
       </div>
     <% end %>
   </div>
-  <div class="destroy">
-    <%= link_to("削除", "/images/#{@image.id}/destroy", "data-confirm" => "本当に削除しますか？") %>
-  </div>
+    <a href="#" onclick="confirmAndDelete(<%= @image.id %>, 'image')">
+      <div class="destroy">
+        <%= "投稿削除" %>
+      </div>
+    </a>
 </div>
