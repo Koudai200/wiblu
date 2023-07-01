@@ -19,5 +19,10 @@
         </div>
       <% end %>
     </div>
+    <a href="#" onclick="confirmAndDelete(<%= @post.id %>, 'post')">
+      <div class="destroy">
+        <%= "投稿削除" %>
+      </div>
+    </a>
   </div>
 </div>
