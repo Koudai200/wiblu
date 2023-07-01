@@ -1,23 +1,21 @@
 <div class="main posts-show">
   <div class="container">
-    <div class="posts-show-item">
+    <div class="images-show-item">
       <div class="post-left">
         <img src="<%= "/user_images/#{@user.image_name}" %>">
       </div>
-      <div class="post-user-name">
-        <%= link_to(@user.name, "/users/#{@user.id}") %>
+      <div class="post-right">
+        <div class="post-user-name">
+          <%= link_to(@user.name, "/users/#{@user.id}") %>
+        </div>
       </div>
-      <p>タイトル</p>
-      <div>
-        <%= @post.title %>
-      </div>
-      <p>歌詞</p>
-      <div>
-        <%= @post.content %>
-      </div>
-      <p>概要欄</P>
-      <div>
-        <%= @post.body %>
+      <div class="image-body">
+        <p>タイトル</p>
+        <div><%= @post.title %></div>
+        <p>歌詞</p>
+        <div><%= @post.content %></div>
+        <p>概要欄</P>
+        <div><%= @post.body %></div>
       </div>
       <div class="post-time">
         <%= @post.created_at.strftime("%Y年%m月%d日 %H:%M:%S") %>
@@ -31,11 +29,10 @@
           <span class="fa fa-heart unliked-btn"></span>
         <% end %>
       <% end %>
-      <%= Like.where(post_id: @post.id).count %>
+      <%= @likes_count %>
       <% if @post.user_id == @current_user.id %>
         <div class="post-menus">
           <%= link_to("編集", "/posts/#{@post.id}/edit") %>
-          <%= link_to("削除", "/posts/#{@post.id}/destroy") %>
         </div>
       <% end %>
     </div>
