@@ -22,10 +22,10 @@
         <% end %>
       </div>
     </div>
-    <div class="destroy">
-      <% if @user.id == @current_user.id %>
-        <%= link_to("アカウント削除", "/users/#{@user.id}/destroy", "data-confirm" => "本当にアカウントを削除しますか？") %>
-      <% end %>
-    </div>
+    <a href="#" onclick="confirmAndDelete(<%= @user.id %>, 'user')">
+      <div class="destroy">
+        <%= "アカウント削除" %>
+      </div>
+    </a>
   </div>
 </div>
