@@ -66,3 +66,29 @@
       }
     });
   });
+
+function confirmAndDelete(itemId, itemType) {
+    var confirmMessage = '';
+    var url = '';
+  
+    if (itemType === 'post') {
+      confirmMessage = '本当に投稿を削除しますか？';
+      url = "/posts/" + itemId + "/destroy";
+    } else if (itemType === 'user') {
+      confirmMessage = '本当にアカウントを削除しますか？';
+      url = "/users/" + itemId + "/destroy";
+    } else if (itemType === 'music') {
+      confirmMessage = '本当に音楽を削除しますか？';
+      url = "/musics/" + itemId + "/destroy";
+    } else if (itemType === 'movie') {
+      confirmMessage = '本当に映像を削除しますか？';
+      url = "/movies/" + itemId + "/destroy";
+    } else if (itemType === 'image') {
+      confirmMessage = '本当にイラストを削除しますか？';
+      url = "/images/" + itemId + "/destroy";
+    }
+  
+    if (confirm(confirmMessage)) {
+      window.location.href = url;
+    }
+  }
