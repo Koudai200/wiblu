@@ -4,6 +4,7 @@ class User < ApplicationRecord
     has_many :entries, dependent: :destroy
     has_many :messages, dependent: :destroy
     has_many :likes
+    has_many :applies, dependent: :destroy
     has_many :posts, dependent: :destroy
     has_many :musics, dependent: :destroy
     has_many :movies, dependent: :destroy
