@@ -7,6 +7,9 @@ class Music < ApplicationRecord
 
     has_many :likes
 
+    has_many :applies, dependent: :destroy
+    has_many :users, through: :requests
+
     def self.search(keyword)
       where(["body like?", "%#{keyword}%"])
     end
