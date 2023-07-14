@@ -28,6 +28,11 @@ class MusicsController < ApplicationController
     @music = Music.find_by(id: params[:id])
     @user = User.find_by(id: @music.user_id)
     @likes_count = Like.where(music_id: @music).count
+    if @apply.nil?
+      @apply = Apply.new
+    else
+      @apply = Apply.find_by(movie_id: @movie.id)
+    end
   end
 
   def edit
