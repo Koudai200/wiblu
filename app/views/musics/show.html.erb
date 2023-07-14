@@ -39,5 +39,23 @@
         </div>
       <% end %>
     </div>
+    <% if @music.user_id != @current_user.id %>
+      <div class="destroy">
+        <% if Apply.find_by(request_id: @music.user_id, music_id: @music.id) %>
+          <%= link_to("利用可能", "/applies/#{@user.id}/index") %>
+        <% elsif Apply.find_by(music_id: @music.id) %>
+          <%= "申請中" %>
+        <% else %>
+          <% if flash[:success] == "申請が送信されました" %>
+            <%= "申請中" %>
+          <% else %>
+            <%= form_for @apply, url: "/musics/#{@music.id}/applies", method: :post do |f| %>
+              <%= f.hidden_field :music_id, value: @music.id %>
+              <%= f.submit "申請する" %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
