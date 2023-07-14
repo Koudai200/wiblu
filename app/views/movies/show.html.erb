@@ -40,4 +40,22 @@
     <% end %>
     </div>
   </div>
+  <% if @movie.user_id != @current_user.id %>
+      <div class="destroy">
+        <% if Apply.find_by(request_id: @movie.user_id, movie_id: @movie.id) %>
+          <%= link_to("利用可能", "/applies/#{@user.id}/index") %>
+        <% elsif Apply.find_by(movie_id: @movie.id) %>
+          <%= "申請中" %>
+        <% else %>
+          <% if flash[:success] == "申請が送信されました" %>
+            <%= "申請中" %>
+          <% else %>
+            <%= form_for @apply, url: "/movies/#{@movie.id}/applies", method: :post do |f| %>
+              <%= f.hidden_field :movie_id, value: @movie.id %>
+              <%= f.submit "申請する" %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
 </div>
