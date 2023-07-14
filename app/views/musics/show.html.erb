@@ -8,9 +8,7 @@
         <%= link_to(@user.name, "/users/#{@user.id}") %>
       </div>
       <div class="image-contents">
-        <audio src="<%= @music.file %>" controls="">
-          <a href="<%= @music.file %>">ダウンロード</a>
-        </audio>
+        <audio controlslist="nodownload" controls src="<%= @music.file %>"></audio>
         <div class="image-body">
           <p>タイトル</p>
           <div><%= @music.body %></div>
