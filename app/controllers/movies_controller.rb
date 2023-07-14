@@ -26,6 +26,11 @@ class MoviesController < ApplicationController
     @movie = Movie.find_by(id: params[:id])
     @user = User.find_by(id: @movie.user_id)
     @likes_count = Like.where(movie_id: @movie).count
+    if @apply.nil?
+      @apply = Apply.new
+    else
+      @apply = Apply.find_by(movie_id: @movie.id)
+    end
   end
 
   def edit
