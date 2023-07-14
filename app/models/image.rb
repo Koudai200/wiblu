@@ -8,6 +8,9 @@ class Image < ApplicationRecord
 
   belongs_to :user
 
+  has_many :applies, dependent: :destroy
+  has_many :users, through: :requests
+
   def self.search(keyword)
     where(["image_name like? OR ctype like?", "%#{keyword}%", "%#{keyword}%"])
   end
