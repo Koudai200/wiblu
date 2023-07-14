@@ -1,5 +1,9 @@
 class AppliesController < ApplicationController
-    before_action :authenticate_user, {only: [:index, :update, :destroy]}
+    before_action :authenticate_user
+    before_action :ensure_correct_user,
+    {only: [:post_create, :music_create, :movie_create,:image_create,
+            :post_update, :music_update, :movie_update, :image_update,
+            :post_destroy, :music_destroy, :movie_destroy, :image_destroy]}
 
     def post_create
         @apply = Apply.new(post_id: apply_params[:post_id])
@@ -155,6 +159,14 @@ class AppliesController < ApplicationController
     def index
       @applies = Apply.all.order(created_at: :desc)
       @apply = Apply.find_by(id: params[:id])
+    end
+
+    def ensure_correct_user
+      @apply = Apply.find_by(id: params[:id])
+      if @apply.user_id != @current_user.id
+        flash[:notice] = "権限がありません"
+        redirect_to action: :index
+      end
     end
   
     private
