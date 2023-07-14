@@ -38,5 +38,23 @@
       <% end %>
     </div>
     </div>
+    <% if @image.user_id != @current_user.id %>
+      <div class="destroy">
+        <% if Apply.find_by(request_id: @image.user_id, image_id: @image.id) %>
+          <%= link_to("利用可能", "/applies/#{@user.id}/index") %>
+        <% elsif Apply.find_by(image_id: @image.id) %>
+          <%= "申請中" %>
+        <% else %>
+          <% if flash[:success] == "申請が送信されました" %>
+            <%= "申請中" %>
+          <% else %>
+            <%= form_for @apply, url: "/images/#{@image.id}/applies", method: :post do |f| %>
+              <%= f.hidden_field :image_id, value: @image.id %>
+              <%= f.submit "申請する" %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
