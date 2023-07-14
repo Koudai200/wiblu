@@ -67,7 +67,7 @@
     });
   });
 
-function confirmAndDelete(itemId, itemType) {
+  function confirmAndDelete(itemId, itemType) {
     var confirmMessage = '';
     var url = '';
   
@@ -92,3 +92,4 @@ function confirmAndDelete(itemId, itemType) {
       window.location.href = url;
     }
   }
+  
