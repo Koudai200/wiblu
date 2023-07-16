@@ -14,25 +14,9 @@ class User < ApplicationRecord
     validates :name, {presence: true}
     validates :email,{presence: true, uniqueness: true}
     validates :agreement, acceptance: true
+    validates :reset_password_token, uniqueness: true, allow_nil: true
 
     def self.search(keyword)
       where(["name like?", "%#{keyword}%"])
     end
-
-    def posts
-      return Post.where(user_id: self.id)
-    end
-
-    def images
-      return Image.where(user_id: self.id)
-    end
-
-    def movies
-      return Movie.where(user_id: self.id)
-    end
-
-    def musics
-      return Music.where(user_id: self.id)
-    end
-
 end
