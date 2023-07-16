@@ -6,6 +6,7 @@ class PasswordResetsController < ApplicationController
     @user = User.find_by(email: params[:email])
     @user&.deliver_reset_password_instructions!
     flash[:success] = 'パスワードリセット手順を送信しました'
+    redirect_to("/")
   end
 
   def edit
