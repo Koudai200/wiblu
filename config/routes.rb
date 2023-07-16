@@ -80,6 +80,8 @@ Rails.application.routes.draw do
   post "posts/:id/applies/update" => "applies#post_update"
   delete "posts/:id/applies" => "applies#post_destroy"
 
+  resources :password_resets, only: [:new, :create, :edit, :update]
+
   resources :messages, only: [:create]
   get "rooms/index" => "rooms#index"
   get "rooms/:id" => "rooms#show"
