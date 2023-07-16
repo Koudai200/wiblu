@@ -39,16 +39,12 @@ class UsersController < ApplicationController
     
   def create
     @user = User.new(user_params)
-    if @user.email.present? # メールアドレスが空でないことを確認
-      if @user.save
-        session[:user_id] = @user.id
-        flash[:notice] = "ユーザー登録が完了しました"
-        redirect_to user_path(@user)
-      else
-        render :new
-      end
+    if @user.save
+      session[:user_id] = @user.id
+      flash[:notice] = "ユーザー登録が完了しました"
+      redirect_to user_path(@user)
     else
-      flash.now[:alert] = "メールアドレスを入力してください"
+      flash.now[:alert] = "ユーザー登録に失敗しました"
       render :new
     end
   end
