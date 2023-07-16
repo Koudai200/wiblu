@@ -48,6 +48,8 @@ gem "mysql2", ">= 0.5.3", "< 0.7.0"
 
 gem "pry-rails"
 
+gem 'sorcery'
+
 group :production do
   gem 'unicorn', '5.4.1'
 end
