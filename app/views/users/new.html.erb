@@ -19,6 +19,7 @@
          
           <p>パスワード</p>
           <%= f.password_field :password, class: "form-control", value: @user&.password %>
+          <%= link_to ">>パスワードを忘れた方はこちら", new_password_reset_path %>
           
           <%= f.label :agreement, :class => "form-check-label" do %>
             <%= f.check_box :agreement, class: "form-check-input" %>
