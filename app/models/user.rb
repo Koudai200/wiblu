@@ -13,6 +13,7 @@ class User < ApplicationRecord
     validates_acceptance_of :agreement, allow_nil: false, on: :create
     validates :name, {presence: true}
     validates :email,{presence: true, uniqueness: true}
+    validates :agreement, acceptance: true
 
     def self.search(keyword)
       where(["name like?", "%#{keyword}%"])
