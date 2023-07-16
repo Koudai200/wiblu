@@ -50,6 +50,10 @@ gem "pry-rails"
 
 gem 'sorcery'
 
+gem 'letter_opener_web'
+
+gem 'config'
+
 group :production do
   gem 'unicorn', '5.4.1'
 end
