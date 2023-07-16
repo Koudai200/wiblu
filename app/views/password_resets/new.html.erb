@@ -1,0 +1,15 @@
+<div class="main users-new">
+  <div class="container">
+    <h1 class="form-heading">パスワードリセット申請</h1>
+      <div class="form users-form">
+        <div class="form-body">
+          <%= form_with url: password_resets_path, local: true, method: :post do |f| %>
+            <%= f.label :email, "メールアドレス" %>
+            <%= f.text_field :email, class:"form-control" %>
+            <%= f.submit '送信', class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
