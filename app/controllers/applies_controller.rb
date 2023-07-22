@@ -1,8 +1,7 @@
 class AppliesController < ApplicationController
     before_action :authenticate_user
     before_action :ensure_correct_user,
-    {only: [:post_create, :music_create, :movie_create,:image_create,
-            :post_update, :music_update, :movie_update, :image_update,
+    {only: [:post_update, :music_update, :movie_update, :image_update,
             :post_destroy, :music_destroy, :movie_destroy, :image_destroy]}
 
     def post_create
@@ -62,6 +61,20 @@ class AppliesController < ApplicationController
         end
     end
 
+    def video_create
+      @apply = Apply.new(video_id: apply_params[:video_id])
+      @video = Video.find_by(id: apply_params[:video_id])
+      @apply.user_id = @current_user.id
+      if @apply.save
+        flash[:notice] = "申請が送信されました"
+        flash[:success] = "申請が送信されました"
+        redirect_to video_path(id: @video.id)
+      else
+        flash[:alert] = "申請に失敗しました"
+        redirect_to video_path(id: @video.id)
+      end
+    end
+
     def post_update
         @apply = Apply.find_by(post_id: apply_params[:post_id])
         @apply.request_id = @current_user.id
@@ -110,6 +123,18 @@ class AppliesController < ApplicationController
         end
     end
 
+    def video_update
+      @apply = Apply.find_by(video_id: apply_params[:video_id])
+      @apply.request_id = @current_user.id
+      if @apply.save
+        flash[:notice] = "ダウンロードを許可しました"
+        redirect_to("/applies/#{@current_user.id}/index")
+      else
+        flash[:notice] = "ダウンロードの許可失敗しました"
+        redirect_to("/applies/#{@current_user.id}/index")
+      end
+    end
+
     def post_destroy
         @apply = Apply.find_by(post_id: apply_params[:post_id])
         if @apply
@@ -155,6 +180,16 @@ class AppliesController < ApplicationController
         redirect_to("/applies/#{@current_user.id}/index")
     end
 
+    def video_destroy
+      @apply = Apply.find_by(video_id: apply_params[:video_id])
+      if @apply
+        @apply.destroy
+        flash[:notice] = "申請を拒否しました"
+      else
+        flash[:alert] = "申請の拒否に失敗しました"
+      end
+      redirect_to("/applies/#{@current_user.id}/index")
+    end
   
     def index
       @applies = Apply.all.order(created_at: :desc)
@@ -172,7 +207,7 @@ class AppliesController < ApplicationController
     private
   
     def apply_params
-      params.require(:apply).permit(:post_id, :movie_id,:image_id,:music_id)
+      params.require(:apply).permit(:post_id, :movie_id,:image_id,:music_id, :video_id)
     end
   end
   
