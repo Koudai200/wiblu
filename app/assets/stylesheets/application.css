@@ -201,7 +201,7 @@ header {
     left: 0;
     display: flex;
     flex-direction: column;
-    width: 140px; /* サイドメニューの幅 */
+    width: 15%; /* サイドメニューの幅 */
     max-height: calc(100vh - 100px); /* メニューの最大の高さ（ヘッダーの高さを考慮） */
     background-color: white; /* サイドメニューの背景色 */
     /* その他のスタイルを設定 */
