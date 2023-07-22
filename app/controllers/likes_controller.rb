@@ -37,6 +37,15 @@ class LikesController < ApplicationController
     redirect_to("/images/#{params[:image_id]}")
   end
 
+  def video_create
+    @like = Like.new(
+      user_id: @current_user.id,
+      video_id: params[:video_id]
+    )
+    @like.save
+    redirect_to("/videos/#{params[:video_id]}")
+  end
+
   def destroy
     @like = Like.find_by(
       user_id: @current_user.id,
@@ -71,5 +80,14 @@ class LikesController < ApplicationController
     )
     @like.destroy
     redirect_to("/images/#{params[:image_id]}")
+  end
+
+  def video_destroy
+    @like = Like.find_by(
+      user_id: @current_user.id,
+      video_id: params[:video_id]
+    )
+    @like.destroy
+    redirect_to("/videos/#{params[:video_id]}")
   end
 end

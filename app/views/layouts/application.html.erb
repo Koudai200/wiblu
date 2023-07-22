@@ -6,9 +6,6 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= stylesheet_link_tag 'application', 'posts', 'images', 'movies', 'musics', 'rooms', 'contacts', 'users', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="<%= asset_path('application.js') %>"></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -60,6 +57,11 @@
                   <span>映像</span>
                 </a>
               </li>
+              <li class="Menu-Group-Item">
+              <a class="Menu-Group-Item-Link" href="/videos">
+                <span>ミュージックビデオ</span>
+              </a>
+              </li>
               <hr class="Menu-Group-Separator">
               <li class="Menu-Group-Item">
                 <a class="Menu-Group-Item-Link" href="#">
@@ -85,6 +87,11 @@
                 <a class="Menu-Group-Item-Link" href="/movies/new">
                   <span>映像</span>
                 </a>
+              </li>
+              <li class="Menu-Group-Item">
+              <a class="Menu-Group-Item-Link" href="/videos/new">
+                <span>ミュージックビデオ</span>
+              </a>
               </li>
               <hr class="Menu-Group-Separator">
               <li class="Menu-Group-Item">
@@ -170,5 +177,8 @@
         <%= yield %>
       </div>
     </div>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="<%= asset_path('application.js') %>"></script>
   </body>
 </html>

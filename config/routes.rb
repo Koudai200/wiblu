@@ -41,6 +41,8 @@ Rails.application.routes.draw do
   get "likes/:image_id/image_destroy" => "likes#image_destroy", as: "image_destroy_like"
   get "likes/:movie_id/movie_create" => "likes#movie_create", as: "movie_create_like"
   get "likes/:movie_id/movie_destroy" => "likes#movie_destroy", as: "movie_destroy_like"
+  get "likes/:video_id/video_create" => "likes#video_create", as: "video_create_like"
+  get "likes/:video_id/video_destroy" => "likes#video_destroy", as: "video_destroy_like"
 
   post "musics/:id/update" => "musics#update", as: "update_music"
   get "musics/:id/destroy" => "musics#destroy", as: "destroy_music"
@@ -61,6 +63,12 @@ Rails.application.routes.draw do
     resources :movie_events, only: [:index]
   end
 
+  post "videos/:id/update" => "videos#update", as: "update_video"
+  delete "videos/:id/destroy" => "videos#destroy", as: "destroy_video"
+  resources :videos do
+    resources :video_events, only: [:index]
+  end
+
   resources :applies, only: [:index, :create, :destroy, :update]
   get "applies/:id/index" => "applies#index"
 
@@ -79,6 +87,10 @@ Rails.application.routes.draw do
   post "posts/:id/applies" => "applies#post_create"
   post "posts/:id/applies/update" => "applies#post_update"
   delete "posts/:id/applies" => "applies#post_destroy"
+
+  post "videos/:id/applies" => "applies#video_create"
+  post "videos/:id/applies/update" => "applies#video_update"
+  delete "videos/:id/applies" => "applies#video_destroy"
 
   resources :password_resets, only: [:new, :create, :edit, :update]
 

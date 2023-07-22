@@ -68,28 +68,44 @@
   });
 
   function confirmAndDelete(itemId, itemType) {
-    var confirmMessage = '';
-    var url = '';
+    const itemData = {
+      post: {
+        confirmMessage: '本当に投稿を削除しますか？',
+        url: "/posts/",
+      },
+      user: {
+        confirmMessage: '本当にアカウントを削除しますか？',
+        url: "/users/",
+      },
+      music: {
+        confirmMessage: '本当に音楽を削除しますか？',
+        url: "/musics/",
+      },
+      movie: {
+        confirmMessage: '本当に映像を削除しますか？',
+        url: "/movies/",
+      },
+      image: {
+        confirmMessage: '本当にイラストを削除しますか？',
+        url: "/images/",
+      },
+      video: {
+        confirmMessage: '本当にこのミュージックビデオを削除しますか？',
+        url: "/videos/",
+      },
+    };
   
-    if (itemType === 'post') {
-      confirmMessage = '本当に投稿を削除しますか？';
-      url = "/posts/" + itemId + "/destroy";
-    } else if (itemType === 'user') {
-      confirmMessage = '本当にアカウントを削除しますか？';
-      url = "/users/" + itemId + "/destroy";
-    } else if (itemType === 'music') {
-      confirmMessage = '本当に音楽を削除しますか？';
-      url = "/musics/" + itemId + "/destroy";
-    } else if (itemType === 'movie') {
-      confirmMessage = '本当に映像を削除しますか？';
-      url = "/movies/" + itemId + "/destroy";
-    } else if (itemType === 'image') {
-      confirmMessage = '本当にイラストを削除しますか？';
-      url = "/images/" + itemId + "/destroy";
+    const data = itemData[itemType];
+  
+    if (!data) {
+      console.error("無効なアイテムタイプです。");
+      return;
     }
+  
+    const confirmMessage = data.confirmMessage;
+    const url = data.url + itemId + "/destroy";
   
     if (confirm(confirmMessage)) {
       window.location.href = url;
     }
   }
-  
