@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    authenticates_with_sorcery!
     has_secure_password
 
     has_many :entries, dependent: :destroy
@@ -9,6 +10,7 @@ class User < ApplicationRecord
     has_many :musics, dependent: :destroy
     has_many :movies, dependent: :destroy
     has_many :images, dependent: :destroy
+    has_many :videos, dependent: :destroy
 
     validates_acceptance_of :agreement, allow_nil: false, on: :create
     validates :name, {presence: true}
