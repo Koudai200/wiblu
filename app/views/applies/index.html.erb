@@ -101,6 +101,27 @@
               </div>
             </div>
           <% end %>
+
+          <% video = Video.find_by(id: app.video_id, user_id: app.request_id) %>
+            <% if video %>
+              <div class="users-index-item">
+               <div class="user-left">
+                 <%= image_tag("/user_images/#{video.user.image_name}") %>
+               </div>
+               <div class="user-right">
+                <div class="post-user-name">
+                  <%= link_to(video.user.name, "/users/#{video.user.id}") %>
+                </div>
+                <div class="movie-contents">
+                  <%= video_tag(video.video.to_s, loop: true, autoplay: true, muted: true, controls: true) %>
+                  <%= link_to(video.body, "/videos/#{video.id}") %>
+                </div>
+               </div>
+               <div class="destroy">
+                <%= link_to "ダウンロード", video.video.url, download: true %>
+               </div>
+             </div>
+           <% end %>
         <% end %>
       <% end %>
     </div>
@@ -253,6 +274,41 @@
                 </div>
               </div>
             <% end %>
+
+            <% video = Video.find_by(id: app.video_id, user_id: @current_user.id) %>
+              <% if video %>
+              <div class="users-index-item">
+                <div class="form">
+                  <div class="user-left">
+                    <%= image_tag("/user_images/#{video.user.image_name}") %>
+                  </div>
+                  <div class="user-right">
+                    <div class="post-user-name">
+                      <%= link_to(video.user.name, "/users/#{video.user.id}") %>
+                    </div>
+                    <div class="movie-contents">
+                      <%= video_tag(video.video.to_s, loop: true, autoplay: true, muted: true, controls: true) %>
+                      <%= link_to(video.body, "/videos/#{video.id}") %>
+                      <div>
+                        <ul class="header-menus"> 
+                          <li>
+                            <%= form_for app, url: "/videos/#{video.id}/applies/update", method: :post do |f| %>
+                              <%= f.hidden_field :video_id, value: app.video_id %>
+                              <%= f.submit "承認" %>
+                            <% end %>
+                          </li>
+                          <li>
+                            <%= form_for app, url: "/videos/#{video.id}/applies", method: :delete do |f| %>
+                              <%= f.hidden_field :video_id, value: app.video_id %>
+                              <%= f.submit "却下" %>
+                            <% end %>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
           <% end %>
         <% end %>
       <% end %>
