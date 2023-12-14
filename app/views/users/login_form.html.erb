@@ -15,7 +15,9 @@
         <p>パスワード</p>
         <input type="password" name="password" value="<%= @password %>">
         <%= link_to ">>パスワードを忘れた方はこちら", new_password_reset_path %>
-        <input type="submit" value="ログイン">
+　　　　<div class="form-group">
+        　<input type="submit" value="ログイン">
+　　　　</div>
         <% end %>
       </div>
     </div>
