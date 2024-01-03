@@ -13,149 +13,44 @@
 
   <body>
     <div class="wrapper">
-      <header>
-        <div class="header-logo">
-          <% if @current_user %>
 
+      <header>
+        <input type="checkbox" class="checkbox" id="menu">
+        <label for="menu" class="span-container">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+
+        <div class="header-logo">
           <div class="logo">
             <%= link_to("Wiblu", "https://wiblu-blog.net") %>
           </div>
-          <input type="checkbox" class="checkbox" id="menu">
-          <label for="menu" class="span-container">
-            <span></span>
-            <span></span>
-            <span></span>
-          </label>
-
-          <nav class="Menu">
-            <div class="CloseButton">
-              <label for="menu" class="CloseButton-Icon">×</label>
-            </div>
-            <ul class="Menu-Group">
-              <li class="Menu-Group-Item">
-                <a class="Menu-Group-Item-Link" href="#">
-                  <span>v 投稿一覧</span>
-                </a>
-              </li>
-              <li class="Menu-Group-Item">
-                <a class="Menu-Group-Item-Link" href="/posts/index">
-                  <span>歌詞</span>
-                </a>
-              </li>
-              <li class="Menu-Group-Item">
-                <a class="Menu-Group-Item-Link" href="/musics">
-                  <span>音楽</span>
-                </a>
-              </li>
-              <li class="Menu-Group-Item">
-                <a class="Menu-Group-Item-Link" href="/images">
-                  <span>イラスト</span>
-                </a>
-              </li>
-              <li class="Menu-Group-Item">
-                <a class="Menu-Group-Item-Link" href="/movies">
-                  <span>映像</span>
-                </a>
-              </li>
-              <li class="Menu-Group-Item">
-              <a class="Menu-Group-Item-Link" href="/videos">
-                <span>ミュージックビデオ</span>
-              </a>
-              </li>
-              <hr class="Menu-Group-Separator">
-              <li class="Menu-Group-Item">
-                <a class="Menu-Group-Item-Link" href="#">
-                  <span>v 新規投稿</span>
-                </a>
-              </li>
-              <li class="Menu-Group-Item">
-                <a class="Menu-Group-Item-Link" href="/posts/new">
-                  <span>歌詞</span>
-                </a>
-              </li>
-              <li class="Menu-Group-Item">
-                <a class="Menu-Group-Item-Link" href="/musics/new">
-                  <span>音楽</span>
-                </a>
-              </li>
-              <li class="Menu-Group-Item">
-                <a class="Menu-Group-Item-Link" href="/images/new">
-                  <span>イラスト</span>
-                </a>
-              </li>
-              <li class="Menu-Group-Item">
-                <a class="Menu-Group-Item-Link" href="/movies/new">
-                  <span>映像</span>
-                </a>
-              </li>
-              <li class="Menu-Group-Item">
-              <a class="Menu-Group-Item-Link" href="/videos/new">
-                <span>ミュージックビデオ</span>
-              </a>
-              </li>
-              <hr class="Menu-Group-Separator">
-              <li class="Menu-Group-Item">
-                <a class="Menu-Group-Item-Link" href="/rooms/index">
-                  <span>メッセージ</span>
-                </a>
-              </li>
-              <li class="Menu-Group-Item">
-              <a class="Menu-Group-Item-Link" href="/applies/#{@current_user.id}/index">
-                <span>ダウンロード承認</span>
-              </a>
-              </li>
-              <li class="Menu-Group-Item">
-                <a class="Menu-Group-Item-Link" href="/users/index">
-                  <span>ユーザー一覧</span>
-                </a>
-              </li>
-              <li class="Menu-Group-Item">
-                <a class="Menu-Group-Item-Link" href="/logout", {method: "post"}>
-                  <span>ログアウト</span>
-                </a>
-              </li>
-              <hr class="Menu-Group-Separator">
-              <li class="Menu-Group-Item">
-                <a class="Menu-Group-Item-Link" href="/contacts">
-                  <span>お問い合わせ</span>
-                </a>
-              </li>
-              <li class="Menu-Group-Item">
-                <a class="Menu-Group-Item-Link" href="/riyoukiyaku">
-                  <span>利用規約</span>
-                </a>
-              </li>
-              <li class="Menu-Group-Item">
-                <a class="Menu-Group-Item-Link" href="/puraibasiporisi">
-                  <span>プライバシーポリシー</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <% else %>
-            <div class="logo">
-              <%= link_to("Wiblu", "https://wiblu-blog.net") %>
-            </div>
-          <% end %>
         </div>
-        <ul class="header-menus"> 
-          <% if @current_user %>
+
+        <% if @current_user %>
+
+          <ul class="header-menus"> 
             <li>
               <div class="search" id="search-container">
                 <i id="search-icon" class="fa fa-search"></i>
-                  <div class="search-form">
-                    <%= form_with url: "/search", method: :get, local: true do |f| %>
-                      <%= f.text_field :keyword, value: @keyword, placeholder: "検索 ...", class: "search-input" %>
-                    <% end %>
-                  </div>
+                <div class="search-form">
+                  <%= form_with url: "/search", method: :get, local: true do |f| %>
+                    <%= f.text_field :keyword, value: @keyword, placeholder: "検索 ...", class: "search-input" %>
+                  <% end %>
+                </div>
               </div>
             </li>
             <li class="header-icon">
               <%= link_to("/users/#{@current_user.id}") do %>
-              <img src="<%= "/user_images/#{ERB::Util.html_escape(@current_user.image_name)}" %>">
+                <img src="<%= "/user_images/#{ERB::Util.html_escape(@current_user.image_name)}" %>">
               <% end %>
             </li>
-          <% else %>
+          </ul>
+          
+        <% else %>
+
+          <ul class="header-menus">
             <li>
               <%= link_to("Wibluとは", "https://wiblu-blog.net/wiblu-toha") %>
             </li>
@@ -163,19 +58,100 @@
               <%= link_to("新規登録", "/signup") %>
             </li>
             <li>
-              <%= link_to("ログイン", "/") %>
+               <%= link_to("ログイン", "/") %>
             </li>
-          <% end %>
-        </ul>
+          </ul>
+
+        <% end %>
+
       </header>
+
       <% if flash[:notice] %>
         <div class="flash">
           <%= ERB::Util.html_escape(flash[:notice]) %>
         </div>
       <% end %>
+      
+      <div class="Menu-nav">
+      <nav class="Menu">
+
+        <div class="CloseButton">
+          <label for="menu" class="CloseButton-Icon">×</label>
+        </div>
+
+        <ul class="Menu-Group">
+          <li class="Menu-Group-Item">
+            <a class="Menu-Group-Item-Link" href="#">V 投稿一覧</a>
+          </li>
+          <li class="Menu-Group-Item">
+            <a class="Menu-Group-Item-Link" href="/posts/index">歌詞</a>
+          </li>
+          <li class="Menu-Group-Item">
+            <a class="Menu-Group-Item-Link" href="/musics">音楽</a>
+          </li>
+          <li class="Menu-Group-Item">
+            <a class="Menu-Group-Item-Link" href="/images">イラスト</a>
+          </li>
+          <li class="Menu-Group-Item">
+            <a class="Menu-Group-Item-Link" href="/movies">映像</a>
+          </li>
+          <li class="Menu-Group-Item">
+            <a class="Menu-Group-Item-Link" href="/videos">ミュージックビデオ</a>
+          </li>
+          <hr class="Menu-Group-Separator">
+          <li class="Menu-Group-Item">
+            <a class="Menu-Group-Item-Link" href="#">V 新規投稿</a>
+          </li>
+          <li class="Menu-Group-Item">
+            <a class="Menu-Group-Item-Link" href="/posts/new">歌詞</a>
+          </li>
+          <li class="Menu-Group-Item">
+            <a class="Menu-Group-Item-Link" href="/musics/new">音楽</a>
+          </li>
+          <li class="Menu-Group-Item">
+            <a class="Menu-Group-Item-Link" href="/images/new">イラスト</a>
+          </li>
+          <li class="Menu-Group-Item">
+            <a class="Menu-Group-Item-Link" href="/movies/new">映像</a>
+          </li>
+          <li class="Menu-Group-Item">
+          <a class="Menu-Group-Item-Link" href="/videos/new">ミュージックビデオ</a>
+          </li>
+          <hr class="Menu-Group-Separator">
+          <li class="Menu-Group-Item">
+            <a class="Menu-Group-Item-Link" href="/rooms/index">メッセージ</a>
+          </li>
+          <li class="Menu-Group-Item">
+          <a class="Menu-Group-Item-Link" href="/applies/#{@current_user.id}/index">
+            ダウンロード承認
+          </a>
+          </li>
+          <li class="Menu-Group-Item">
+            <a class="Menu-Group-Item-Link" href="/users/index">ユーザー一覧</a>
+          </li>
+          <li class="Menu-Group-Item">
+            <a class="Menu-Group-Item-Link" href="/logout", {method: "post"}>
+              ログアウト
+            </a>
+          </li>
+          <hr class="Menu-Group-Separator">
+          <li class="Menu-Group-Item">
+            <a class="Menu-Group-Item-Link" href="/contacts">お問い合わせ</a>
+          </li>
+          <li class="Menu-Group-Item">
+            <a class="Menu-Group-Item-Link" href="/riyoukiyaku">利用規約</a>
+          </li>
+          <li class="Menu-Group-Item">
+            <a class="Menu-Group-Item-Link" href="/puraibasiporisi">プライバシーポリシー</a>
+          </li>
+        </ul>
+      </nav>
+      </div>
+
       <div class="body-wrapper">
         <%= yield %>
       </div>
+
     </div>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
