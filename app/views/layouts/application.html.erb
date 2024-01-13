@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Wiblu</title>
+    <title>Libeu</title>
     <%= csrf_meta_tags %>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +16,7 @@
       <header>
         <div class="header-logo">
           <div class="logo">
-            <a href="#">Wiblu</a>
+            <a href="#">Libeu</a>
           </div>
         </div>
         <% if @current_user %>
@@ -37,42 +37,38 @@
               <% end %>
             </li>
           </ul>
-
           <nav id="main-navbar" class="navbar navbar-default navbar-fixed-top">
             <div class="menu-container">
               <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                  <span class="sr-only">Wiblu navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
+                  <span class="fa fa-bars"></span>
+                  <span class="menu-text">menu</span>
                 </button>
               </div>
-
               <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                  <li><a href="#">V 投稿一覧</a></li>
-                  <li><a href="/posts/index">歌詞</a></li>
-                  <li><a href="/musics">音楽</a></li>
-                  <li><a href="/images">イラスト</a></li>
-                  <li><a href="/movies">映像</a></li>
-                  <li><a href="/videos">ミュージックビデオ</a></li>
-                  <hr class="Menu-Group-Separator">
-                  <li><a href="#">V 新規投稿</a></li>
-                  <li><a href="/posts/new">歌詞</a></li>
-                  <li><a href="/musics/new">音楽</a></li>
-                  <li><a href="/images/new">イラスト</a></li>
-                  <li><a href="/movies/new">映像</a></li>
-                  <li><a href="/videos/new">ミュージックビデオ</a></li>
-                  <hr class="Menu-Group-Separator">
-                  <li><a href="/rooms/index">メッセージ</a></li>
-                  <li><a href="/applies/#{@current_user.id}/index">ダウンロード承認</a></li>
-                  <li><a href="/users/index">ユーザー一覧</a></li>
-                  <li><a href="/logout", {method: "post"}>ログアウト</a></li>
-                  <hr class="Menu-Group-Separator">
-                  <li><a href="/contacts">お問い合わせ</a></li>
-                  <li><a href="/riyoukiyaku">利用規約</a></li>
-                  <li><a href="/puraibasiporisi">プライバシーポリシー</a></li>
+                <ul class="nav navbar-nav">
+                <li><a href="#">V 投稿一覧</a></li>
+                <li><a href="/posts/index">歌詞</a></li>
+                <li><a href="/musics">音楽</a></li>
+                <li><a href="/images">イラスト</a></li>
+                <li><a href="/movies">映像</a></li>
+                <li><a href="/videos">ミュージックビデオ</a></li>
+                <hr class="Menu-Group-Separator">
+                <li><a href="#">V 新規投稿</a></li>
+                <li><a href="/posts/new">歌詞</a></li>
+                <li><a href="/musics/new">音楽</a></li>
+                <li><a href="/images/new">イラスト</a></li>
+                <li><a href="/movies/new">映像</a></li>
+                <li><a href="/videos/new">ミュージックビデオ</a></li>
+                <hr class="Menu-Group-Separator">
+                <li><a href="/rooms/index">メッセージ</a></li>
+                <li><a href="/applies/#{@current_user.id}/index">ダウンロード承認</a></li>
+                <li><a href="/users/index">ユーザー一覧</a></li>
+                <li><a href="/logout", {method: "post"}>ログアウト</a></li>
+                <hr class="Menu-Group-Separator">
+                <li><a href="/contacts">お問い合わせ</a></li>
+                <li><a href="/riyoukiyaku">利用規約</a></li>
+                <li><a href="/puraibasiporisi">プライバシーポリシー</a></li>
                 </ul>
               </div>
             </div>
@@ -80,7 +76,7 @@
         <% else %>
           <ul class="header-menus">
             <li>
-              <%= link_to("Wibluとは", "https://wiblu-blog.net/wiblu-toha") %>
+              <%= link_to("Libeuとは", "https://wiblu-blog.net/wiblu-toha") %>
             </li>
             <li>
               <%= link_to("新規登録", "/signup") %>
@@ -101,9 +97,8 @@
       <% end %>
 
       <div class="body-wrapper">
-        <%= yield %>
+          <%= yield %>
       </div>
-
     </div>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
