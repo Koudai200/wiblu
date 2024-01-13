@@ -133,7 +133,7 @@ body {
 
 /* ヘッダー ================================ */
 header {
-height: 64px;
+height: 70px;
 position: fixed!important;
 z-index: 1;
 width: 100%;
@@ -145,8 +145,8 @@ box-shadow: 0px 2px 5px #888888;
 /* ヘッダーロゴのスタイル */
 .header-logo {
 float: left;
-padding-top: 20px;
-padding-left: 30px;
+padding-top: 15px;
+padding-left: 10px;
 color: black;
 font-size: 22px;
 line-height: 35px;
@@ -154,7 +154,7 @@ line-height: 35px;
 
 .header-logo a {
 color: black;
-font-size: 15px;
+font-size: 20px;
 padding: 5px;
 padding-left: 20px;
 }
@@ -194,20 +194,29 @@ margin-right: 10px;
 
 /* パソコンの画面幅 */
 @media screen and (min-width: 768px) {
-.menu-container {
+.navbar-header {
   display: none;
 }
 
 .navbar-collapse {
   position: absolute;
   margin-top: 87px;
-  left: 10px;
+  left: 30px;
   display: flex;
   flex-direction: column;
-  width: 190px; /* サイドメニューの幅 */
+  width: 160px; /* サイドメニューの幅 */
   max-height: calc(100vh - 100px); /* メニューの最大の高さ（ヘッダーの高さを考慮） */
   background-color: white; /* サイドメニューの背景色 */
   /* その他のスタイルを設定 */
+}
+
+.navbar-collapse li{
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.navbar-collapse li a{
+  display: block;
 }
 
 .header-logo {
@@ -233,57 +242,107 @@ margin-right: 10px;
 
 /* スマートフォンの画面幅 */
 @media screen and (max-width: 768px) {
-.logo {
-  padding-left: 25px;
-}
-
-.navbar {
-  flex-direction: column;
-  margin-bottom: 0;
-  background-color: #fff;
-  transition: all 0.2s ease-out;
-}
-
-.menu-container {
-  position: absolute;
-}
 
 .navbar-toggle {
-  top: 70px;
+  position: fixed;
+  margin-left: 20%;
+  margin-top: 190%;
+  cursor: pointer;
 }
 
-.navbar .navbar-nav li a {
-  font-size: 14px;
-  text-transform: uppercase;
-  color: #2E1C05;
-  transition: all 0.2s ease-out;
+.navbar-toggle .fa-bars {
+  font-size: 35px;
 }
 
-.navbar-brand {
-  font-size: 25px;
-  transition: all 0.2s ease-out;
+/* ハンバーガーアイコンのスタイル */
+button {
+  padding: 0;
+  font-family: inherit;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
 }
 
-.navbar-nav>li>a::after {
+.fa-bars {
   position: absolute;
-  top: 80%;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: #2E1C05;
-  content: '';
-  opacity: 0;
-  transition: height 0.3s, opacity 0.3s, transform 0.3s;
-  transform: translateY(-10px);
+  display: flex;
+  width: 80px;
+  aspect-ratio: 1;
+  color: white;
+  background-color: #00ecff;
+  border-radius: 50%;
+  opacity: 0.5;
+  padding-top: 20px;
 }
 
-.navbar-nav>li>a:hover::after,
-.navbar-nav>li>a:focus::after {
-  height: 2px;
-  opacity: 1;
-  transform: translateY(0px);
+.menu-text {
+  position: absolute; /* 絶対位置指定 */
+  font-size: 13px; /* 適切なフォントサイズに調整 */
+  color: white; /* 適切なテキストの色に調整 */
+  padding-top: 48px;
+  padding-left: 22px;
+}
+
+/* メニューの初期状態（非表示） */
+#navbar {
+  display: none;
+  position: fixed;
+  top: 68px;
+  left: -15px;
+  width: 450px;
+  height: 80vh;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  overflow-y: scroll; /* スクロール可能にする */
+  z-index: 1000; /* メニューが他の要素の上に表示されるようにする */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* メニューのリンクスタイル */
+.navbar-nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: 60%;
+}
+
+.navbar-nav a {
+  display: block;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+}
+
+.navbar-collapse li{
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+/* メニューのセパレータースタイル */
+.Menu-Group-Separator {
+  margin: 8px 0;
+  border-top: 1px solid #ddd;
+}
+
+/* メニューが表示される際のアニメーション */
+#navbar.show {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: slideIn 0.3s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 }
+
 
 /* フォーム================================ */
 .form {
@@ -310,7 +369,7 @@ margin-right: 10px;
 
 .form input {
   width: 100%;
-  border: 1px solid #d8dadf;
+  border: 1px solid #bcc8d4;
   padding: 10px;
   color: #57575f;
   font-size: 16px;
@@ -326,8 +385,9 @@ margin-right: 10px;
 }
 
 .form input[type="submit"] {
-  background-color: #3ecdc6;
-  color: white;
+  background-color: white;
+  color: #00ecff;
+  border: 1px solid #00ecff;
   cursor: pointer;
   font-weight: 300;
   width: 120px;
