@@ -1,0 +1,61 @@
+<div class="main posts-show">
+  <div class="container">
+    <div class="images-show-item">
+      <div class="post-left">
+        <%= image_tag("/user_images/#{h(@user.image_name)}") %>
+      </div>
+      <div class="post-right">
+        <div class="post-user-name">
+          <%= link_to(@user.name, user_path(@user)) %>
+        </div>
+      </div>
+      <div class="image-contents">
+        <%= image_tag(@image.ctype.url, size: "400x266", alt: "Image") %>
+        <div class="image-body">
+          <p>タイトル</p>
+          <div><%= @image.image_name %></div>
+          <p>概要欄</p>
+          <div><%= @image.body %></div>
+        </div>
+      </div>
+      <div class="post-time">
+        <%= @image.created_at.strftime("%Y年%m月%d日 %H:%M:%S") %>
+      </div>
+      <% if Like.exists?(user_id: @current_user.id, image_id: @image.id) %>
+        <%= link_to("/likes/#{h(@image.id)}/image_destroy", method: :post, class: "like-button liked", data: { resource_id: @image.id, resource_type: "image" }) do %>
+          <span class="fa fa-heart liked-btn"></span>
+        <% end %>
+      <% else %>
+        <%= link_to("/likes/#{h(@image.id)}/image_create", method: :post, class: "like-button unliked", data: { resource_id: @image.id, resource_type: "image" }) do %>
+          <span class="fa fa-heart unliked-btn"></span>
+        <% end %>
+      <% end %>
+      <%= Like.where(image_id: @image.id).count %>
+      <% if @image.user_id == @current_user.id %>
+        <div class="post-menus">
+          <%= link_to("編集", "/images/#{@image.id}/edit") %>
+        </div>
+      <% end %>
+    </div>
+
+
+    <% if @image.user_id != @current_user.id %>
+      <div class="destroy">
+        <% if Apply.find_by(request_id: @image.user_id, image_id: @image.id) %>
+          <%= link_to("利用可能", "/applies/#{@user.id}/index") %>
+        <% elsif Apply.find_by(image_id: @image.id) %>
+          <%= "申請中" %>
+        <% else %>
+          <% if flash[:success] == "申請が送信されました" %>
+            <%= "申請中" %>
+          <% else %>
+            <%= form_for @apply, url: "/images/#{@image.id}/applies", method: :post do |f| %>
+              <%= f.hidden_field :image_id, value: @image.id %>
+              <%= f.submit "申請する" %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

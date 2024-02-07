@@ -1,0 +1,15 @@
+/* musics/index ================================ */
+
+.music-title {
+  padding-left: 10px;
+  padding-bottom: 15px;
+}
+
+.music-item {
+  align-items: center;
+  font-size: 15px;
+}
+
+.music-item audio {
+  margin-bottom: 10px;
+}

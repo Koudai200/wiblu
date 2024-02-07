@@ -1,0 +1,58 @@
+<div class="main posts-show">
+  <div class="container">
+    <div class="images-show-item">
+      <div class="post-left">
+        <img src="<%= "/user_images/#{@user.image_name}" %>">
+      </div>
+      <div class="post-right">
+        <div class="post-user-name">
+          <%= link_to(@user.name, "/users/#{@user.id}") %>
+        </div>
+      </div>
+      <div class="image-body">
+        <p>タイトル</p>
+        <div><%= @post.title %></div>
+        <p>歌詞</p>
+        <div><%= @post.content %></div>
+        <p>概要欄</P>
+        <div><%= @post.body %></div>
+      </div>
+      <div class="post-time">
+        <%= @post.created_at.strftime("%Y年%m月%d日 %H:%M:%S") %>
+      </div>
+      <% if Like.find_by(user_id: @current_user.id, post_id: @post.id) %>
+        <%= link_to(destroy_like_path(@post.id), method: :post, class: "like-button liked", data: { resource_id: @post.id, resource_type: "post" }) do %>
+          <span class="fa fa-heart liked-btn"></span>
+        <% end %>
+      <% else %>
+        <%= link_to(create_like_path(@post.id), method: :post, class: "like-button unliked", data: { resource_id: @post.id, resource_type: "post" }) do %>
+          <span class="fa fa-heart unliked-btn"></span>
+        <% end %>
+      <% end %>
+      <%= @likes_count %>
+      <% if @post.user_id == @current_user.id %>
+        <div class="post-menus">
+          <%= link_to("編集", "/posts/#{@post.id}/edit") %>
+        </div>
+      <% end %>
+    </div>
+    <% if @post.user_id != @current_user.id %>
+      <div class="destroy">
+        <% if Apply.find_by(request_id: @post.user_id, post_id: @post.id) %>
+          <%= link_to("利用可能", "/applies/#{@user.id}/index") %>
+        <% elsif Apply.find_by(post_id: @post.id) %>
+          <%= "申請中" %>
+        <% else %>
+          <% if flash[:success] == "申請が送信されました" %>
+            <%= "申請中" %>
+          <% else %>
+            <%= form_for @apply, url: "/posts/#{@post.id}/applies", method: :post do |f| %>
+              <%= f.hidden_field :post_id, value: @post.id %>
+              <%= f.submit "申請する" %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

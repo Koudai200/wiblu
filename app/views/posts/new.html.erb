@@ -1,0 +1,23 @@
+<div class="main posts-new">
+  <div class="container">
+    <h1 class="form-heading">歌詞</h1>
+    <div class="form">
+      <%= form_tag("/posts/create") do %>
+        <div class="form-body">
+        <% @post.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
+          <p>タイトル</p>
+          <input col="20" row="1" name="title"><%= @post.title %></textarea>
+          <p>歌詞</p>
+          <textarea name="content"><%= @post.content %></textarea>
+          <p>概要欄</p>
+          <textarea name="body"><%= @post.body %></textarea>
+          <input type="submit" value="投稿">
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

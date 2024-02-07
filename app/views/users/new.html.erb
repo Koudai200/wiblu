@@ -1,0 +1,32 @@
+<div class="main users-new">
+  <div class="container">
+    <h1 class="form-heading">新規ユーザー登録</h1>
+    <div class="form users-form">
+      <div class="form-body">
+        <% if @user.errors.any? %>
+          <% @user.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
+        <% end %>
+
+        <%= form_for @user, url: "/users/create" do |f| %>
+          <p>ユーザー名</p>
+          <%= f.text_field :name, class: "form-control", value: @user&.name %>        
+          <p>メールアドレス</p>
+          <%= f.text_field :email, class: "form-control", value: @user&.email %>
+         
+          <p>パスワード</p>
+          <%= f.password_field :password, class: "form-control", value: @user&.password %>
+          
+          <%= f.label :agreement, :class => "form-check-label" do %>
+            <%= f.check_box :agreement, class: "form-check-input" %>
+            <%= link_to("利用規約", "/riyoukiyaku") %>と<%= link_to("プライバシーポリシー", "/puraibasiporisi") %>に同意する
+          <% end %>
+          <%= f.submit "新規登録", class: "btn btn-large btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="main posts-new">
+  <div class="container">
+    <h1 class="form-heading">編集</h1>
+    <div class="form">
+      <%= form_with(model: @image, url: "/images/#{@image.id}", method: :put) do |form| %>
+        <div class="form-body">
+          <% @image.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
+
+          <%= image_tag(@image.ctype.to_s, size: "300x200") %>
+          <p>タイトル</p>
+          <%= form.text_field :image_name %>
+          <p>概要欄</p>
+          <%= form.text_area :body %>
+          <%= form.submit "保存" %>
+        </div>
+      <% end %>
+    </div>
+    <a href="#" onclick="confirmAndDelete(<%= @image.id %>, 'image')">
+      <div class="destroy">
+        <%= "投稿削除" %>
+      </div>
+    </a>
+  </div>
+</div>

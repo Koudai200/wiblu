@@ -1,0 +1,36 @@
+<div class="main posts-new">
+  <div class="container">
+    <h1 class="form-heading">編集</h1>
+    <div class="form">
+      <%= form_for @movie, url: movie_path(@movie), method: :patch do |f| %>
+        <div class="form-body">
+          <% @movie.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
+          <div class="movie-contents">
+            <%= video_tag(@movie.video.to_s, loop: true, autoplay: true, muted: true, controls: true) %>
+
+            <div class="form-group">
+              <%= f.label :body, "タイトル" %>
+              <%= f.text_field :body, rows: 2, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :content, "概要欄" %>
+            <%= f.text_area :content, rows: 5, class: "form-control" %>
+          </div>
+
+          <%= f.submit "保存", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+    <a href="#" onclick="confirmAndDelete(<%= @movie.id %>, 'movie')">
+      <div class="destroy">
+        <%= "投稿削除" %>
+      </div>
+    </a>
+  </div>
+</div>

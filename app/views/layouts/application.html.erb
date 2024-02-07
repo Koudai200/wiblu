@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Libeu</title>
+    <%= csrf_meta_tags %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= stylesheet_link_tag 'application', 'posts', 'images', 'movies', 'musics', 'rooms', 'contacts', 'users', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <header>
+        <div class="header-logo">
+          <div class="logo">
+            <a href="#">Libeu</a>
+          </div>
+        </div>
+        <% if @current_user %>
+          <ul class="header-menus"> 
+            <li>
+              <div class="search" id="search-container">
+                <i id="search-icon" class="fa fa-search"></i>
+                <div class="search-form">
+                  <%= form_with url: "/search", method: :get, local: true do |f| %>
+                    <%= f.text_field :keyword, value: @keyword, placeholder: "検索 ...", class: "search-input" %>
+                  <% end %>
+                </div>
+              </div>
+            </li>
+            <li class="header-icon">
+              <%= link_to("/users/#{@current_user.id}") do %>
+                <img src="<%= "/user_images/#{ERB::Util.html_escape(@current_user.image_name)}" %>">
+              <% end %>
+            </li>
+          </ul>
+          <nav id="main-navbar" class="navbar navbar-default navbar-fixed-top">
+            <div class="menu-container">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                  <span class="fa fa-bars"></span>
+                  <span class="menu-text">menu</span>
+                </button>
+              </div>
+              <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                <li><a href="#">V 投稿一覧</a></li>
+                <li><a href="/posts/index">歌詞</a></li>
+                <li><a href="/musics">音楽</a></li>
+                <li><a href="/images">イラスト</a></li>
+                <li><a href="/movies">映像</a></li>
+                <li><a href="/videos">ミュージックビデオ</a></li>
+                <hr class="Menu-Group-Separator">
+                <li><a href="#">V 新規投稿</a></li>
+                <li><a href="/posts/new">歌詞</a></li>
+                <li><a href="/musics/new">音楽</a></li>
+                <li><a href="/images/new">イラスト</a></li>
+                <li><a href="/movies/new">映像</a></li>
+                <li><a href="/videos/new">ミュージックビデオ</a></li>
+                <hr class="Menu-Group-Separator">
+                <li><a href="/rooms/index">メッセージ</a></li>
+                <li><a href="/applies/#{@current_user.id}/index">ダウンロード承認</a></li>
+                <li><a href="/users/index">ユーザー一覧</a></li>
+                <li><a href="/logout", {method: "post"}>ログアウト</a></li>
+                <hr class="Menu-Group-Separator">
+                <li><a href="/contacts">お問い合わせ</a></li>
+                <li><a href="/riyoukiyaku">利用規約</a></li>
+                <li><a href="/puraibasiporisi">プライバシーポリシー</a></li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        <% else %>
+          <ul class="header-menus">
+            <li>
+              <%= link_to("Libeuとは", "https://wiblu-blog.net/wiblu-toha") %>
+            </li>
+            <li>
+              <%= link_to("新規登録", "/signup") %>
+            </li>
+            <li>
+               <%= link_to("ログイン", "/") %>
+            </li>
+          </ul>
+
+        <% end %>
+
+      </header>
+
+      <% if flash[:notice] %>
+        <div class="flash">
+          <%= ERB::Util.html_escape(flash[:notice]) %>
+        </div>
+      <% end %>
+
+      <div class="body-wrapper">
+          <%= yield %>
+      </div>
+    </div>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="<%= asset_path('application.js') %>"></script>
+  </body>
+</html>

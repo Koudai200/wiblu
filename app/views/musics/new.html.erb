@@ -1,0 +1,38 @@
+<div class="main posts-new">
+<div class="container">
+  <div class="form-heading">音楽</div>
+
+    <%= form_with model: @music do |form| %>
+      <% if @music.errors.any? %>
+        <div style="color: red">
+          <h2><%= pluralize(music.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+          <ul>
+            <% @music.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+
+        </div>
+      <% end %>
+    <% end %>
+
+  <div class="form">
+    <div class="form-body">
+      <%= form_for @music do |f| %>
+
+        <%= f.label :ファイル %>
+          <%= f.file_field :file, :size => 140 %>
+
+        <%= f.label :タイトル %>
+          <%= f.text_field :body, :size => 30 %>
+
+        <%= f.label :概要欄 %>
+          <%= f.text_area :content, :size => 300 %>
+        <div class="form-group">
+          <%= f.submit "投稿" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

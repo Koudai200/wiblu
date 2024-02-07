@@ -1,0 +1,35 @@
+<div class="main posts-index">
+  <div class="container">
+      <div id="musics">
+        <% @musics.each do |music| %>
+          <div class="posts-index-item">
+            <div class="post-left">
+              <img src="<%= "/user_images/#{music.user.image_name}" %>">
+            </div>
+            <div class="post-right">
+              <div class="post-user-name">
+                <%= link_to(music.user.name, "/users/#{music.user.id}") %>
+              </div>
+            </div>
+            <div class="music-content">
+              <div class="music-item">
+              <div class="music-title"><%= link_to(music.body, "/musics/#{music.id}" ) %></div>
+                <div class="music-like">
+                  <% if Like.find_by(user_id: @current_user.id, music_id: music.id) %>
+                    <%= link_to("/likes/#{music.id}/music_destroy", method: :post, class: "like-button liked", data: { resource_id: music.id, resource_type: "music" }) do %>
+                      <span class="fa fa-heart liked-btn"></span>
+                    <% end %>
+                  <% else %>
+                    <%= link_to("/likes/#{music.id}/music_create", method: :post, class: "like-button unliked", data: { resource_id: music.id, resource_type: "music"}) do %>
+                      <span class="fa fa-heart unliked-btn"></span>
+                    <% end %>
+                  <% end %>
+                  <%= Like.where(music_id: music.id).count %>
+                </div>
+              </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+  </div>
+</div>

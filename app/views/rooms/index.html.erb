@@ -1,0 +1,20 @@
+<div class="main users-index">
+  <div class="container">
+    <% @another_entries.each do |entry| %>
+      <div class="users-index-item">
+        <% message = entry.room.messages.last %>
+        <%= link_to room_path(entry.room) do %>
+          <%= link_to room_path(entry.room) do %>
+            <div class="user-left">
+              <%= image_tag("/user_images/#{message.user.image_name}") %>
+            </div>
+          <% end %>
+          <div class="user-right">
+            <%= link_to(message.user.name, room_path(entry.room)) %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
