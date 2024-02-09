@@ -90,4 +90,8 @@ class LikesController < ApplicationController
     @like.destroy
     redirect_to("/videos/#{params[:video_id]}")
   end
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> origin/main

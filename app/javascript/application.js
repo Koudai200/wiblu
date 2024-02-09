@@ -67,6 +67,26 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
+<<<<<<< HEAD
+=======
+// JavaScriptでハンバーガーメニューを制御
+document.addEventListener("DOMContentLoaded", function () {
+  const navbarToggle = document.querySelector(".navbar-toggle");
+  const navbarMenu = document.getElementById("navbar");
+
+  navbarToggle.addEventListener("click", function () {
+    navbarMenu.classList.toggle("show");
+  });
+
+  // クリック以外の場所をクリックしたらメニューを閉じる
+  document.addEventListener("click", function (event) {
+    if (!navbarToggle.contains(event.target) && !navbarMenu.contains(event.target)) {
+      navbarMenu.classList.remove("show");
+    }
+  });
+});
+
+>>>>>>> origin/main
 function confirmAndDelete(itemId, itemType) {
   const itemData = {
     post: {
@@ -108,4 +128,8 @@ function confirmAndDelete(itemId, itemType) {
   if (confirm(confirmMessage)) {
     window.location.href = url;
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/main

@@ -24,4 +24,8 @@ class RoomsController < ApplicationController
     @entries = @room.entries
     @another_entry = @entries.where.not(user_id: @current_user.id).first
   end
+<<<<<<< HEAD
 end 
+=======
+end 
+>>>>>>> origin/main

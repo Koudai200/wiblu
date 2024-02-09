@@ -67,7 +67,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-ge
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara'
@@ -78,11 +78,13 @@ end
 
 group :production, :staging do
   gem 'mysql2'
+  gem 'unicorn'
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'

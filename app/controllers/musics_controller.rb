@@ -31,7 +31,11 @@ class MusicsController < ApplicationController
     if @apply.nil?
       @apply = Apply.new
     else
+<<<<<<< HEAD
       @apply = Apply.find_by(music_id: @music.id)
+=======
+      @apply = Apply.find_by(movie_id: @movie.id)
+>>>>>>> origin/main
     end
   end
 

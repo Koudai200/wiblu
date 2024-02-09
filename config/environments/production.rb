@@ -89,5 +89,13 @@ Rails.application.configure do
   end
 
   # Do not dump schema after migrations.
+<<<<<<< HEAD
   config.active_record.dump_schema_after_migration = false
 end
+=======
+
+  config.active_record.dump_schema_after_migration = false
+end
+
+
+>>>>>>> origin/main

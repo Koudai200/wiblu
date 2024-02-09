@@ -4,7 +4,10 @@
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   justify-content: space-around;
   align-content: flex-start;
+<<<<<<< HEAD
   margin: 20px 3px 3px 3px;
+=======
+>>>>>>> origin/main
   }
   
   .posts-index-item {
@@ -51,7 +54,11 @@
   }
   
   .posts-show-item {
+<<<<<<< HEAD
   padding: 10px;
+=======
+  padding: 30px;
+>>>>>>> origin/main
   background-color: white;
   box-shadow: 0 2px 6px #c1ced7;
   overflow: hidden;
@@ -92,7 +99,11 @@
   
   /* posts/new ================================ */
   .posts-new textarea {
+<<<<<<< HEAD
   font-size: 10px;
+=======
+  font-size: 20px;
+>>>>>>> origin/main
   padding: 10px;
   min-height: 140px;
   border: 1px solid rgb(216, 218, 223);
@@ -100,6 +111,12 @@
   }
   
   .posts-new textarea::-webkit-input-placeholder {
+<<<<<<< HEAD
   font-size: 15px;
   opacity: 0.5;
   }
+=======
+  font-size: 24px;
+  opacity: 0.5;
+  }
+>>>>>>> origin/main

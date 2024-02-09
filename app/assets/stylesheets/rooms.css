@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 
+=======
+/* 全体 */
+>>>>>>> origin/main
 .chat-room {
   padding: 30px 50px;
 }
@@ -7,6 +11,7 @@
   position: relative;
   overflow: hidden;
 }
+<<<<<<< HEAD
 
 .icon-img {
   position: absolute;
@@ -20,6 +25,22 @@
   left: 0;
 }
 
+=======
+/* アイコン画像 */
+.icon-img {
+  position: absolute;
+  overflow: hidden;
+  top: 0; /* 画像の位置を上から0に */
+  width: 80px; /* 画像の幅 */
+  height: 80px; /* 画像の高さ */
+}
+/* アイコン画像（左） */
+.icon-img-left {
+  left: 0; /* 画像の位置を左から0に */
+}
+
+/* アイコン画像 */
+>>>>>>> origin/main
 .icon-img img {
   display: block;
   width: 60px;
@@ -29,6 +50,7 @@
   box-shadow: 0 2px 6px #c1ced7;
 }
 
+<<<<<<< HEAD
 .icon-name {
   position: absolute;
   width: 80px;
@@ -46,10 +68,32 @@
   position: relative;
   float: left;
   margin: 0 105px 40px 105px;
+=======
+/* アイコンネーム */
+.icon-name {
+  position: absolute;
+  width: 80px; /* ネームの最大幅を画像と同じに */
+  text-align: center; /* ネームの位置をセンターに */
+  top: 83px; /* ネームの位置を上から83に */
+  color: #777; /* ネームのカラー */
+  font-size: 10px; /* ネームのフォントサイズ */
+}
+/* アイコンネーム（左） */
+.icon-name-left {
+  left: 0; /* ネームの位置を左から0に */
+}
+
+/* 吹き出し */
+.sb-side {
+  position: relative;
+  float: left;
+  margin: 0 105px 40px 105px; /* 吹き出しの上下左右の余白 */
+>>>>>>> origin/main
 }
 .sb-side-right {
   float: right;
 }
+<<<<<<< HEAD
 
 .sb-txt {
   position: relative;
@@ -66,17 +110,40 @@
   margin-bottom: 0;
 }
 
+=======
+/* 吹き出し内のテキスト */
+.sb-txt {
+  position: relative;
+  border: 2px solid #eee; /* 吹き出しの縁取りの太さとカラー */
+  border-radius: 6px; /* 吹き出しを角丸に */
+  background: #fff; /* 吹き出しの背景色 */
+  color: #333; /* 吹き出し内のテキストのカラー */
+  font-size: 15px; /* 吹き出し内のフォントサイズ */
+  line-height: 1.7; /* 吹き出し内のテキストが2行以上になった時の行間 */
+  padding: 18px; /* 吹き出し内の上下左右の余白 */
+}
+.sb-txt > p:last-of-type {
+  padding-bottom: 0; /* 吹き出し内のテキストを改行した場合、最後のpタグにpadding-bottomをつけない */
+  margin-bottom: 0; /* 吹き出し内のテキストを改行した場合、最後のpタグにmargin-bottomをつけない */
+}
+/* 吹き出しの三角 */
+>>>>>>> origin/main
 .sb-txt:before {
   content: "";
   position: absolute;
   border-style: solid;
+<<<<<<< HEAD
   top: 16px;
+=======
+  top: 16px; /* 吹き出し内の三角の位置 */
+>>>>>>> origin/main
   z-index: 3;
 }
 .sb-txt:after {
   content: "";
   position: absolute;
   border-style: solid;
+<<<<<<< HEAD
   top: 15px;
   z-index: 2;
 }
@@ -128,6 +195,63 @@
   }
 }
 
+=======
+  top: 15px; /* beforeより-1px */
+  z-index: 2; /* beforeより-1 */
+}
+/* 吹き出しの三角（左） */
+.sb-txt-left:before {
+  left: -7px;
+  border-width: 7px 10px 7px 0;
+  border-color: transparent #fff transparent transparent; /* 背景色と同じカラーに */
+}
+.sb-txt-left:after {
+  left: -10px; /* beforeより-3px */
+  border-width: 8px 10px 8px 0; /* beforeより上下+1px */
+  border-color: transparent #eee transparent transparent; /* 縁取りと同じカラーに */
+}
+/* 吹き出しの三角（右） */
+.sb-txt-right:before {
+  right: -7px;
+  border-width: 7px 0 7px 10px;
+  border-color: transparent transparent transparent #fff; /* 背景色と同じカラーに */
+}
+.sb-txt-right:after {
+  right: -10px; /* beforeより-3px */
+  border-width: 8px 0 8px 10px; /* beforeより上下+1px */
+  border-color: transparent transparent transparent #eee; /* 縁取りと同じカラーに */
+}
+
+/* 767px（iPad）以下 */
+
+@media (max-width: 767px) {
+  /* アイコン画像 */
+  .icon-img {
+    width: 60px; /* 画像の幅を-20px */
+    height: 60px; /* 画像の高さを-20px */
+  }
+  /* アイコンネーム */
+  .icon-name {
+    width: 60px; /* 画像の幅に合わせて-20px */
+    top: 62px; /* ネームの位置を上から62に */
+    font-size: 9px; /* ネームのフォントサイズを-1px */
+  }
+  /* 吹き出し（左） */
+  .sb-side-left {
+    margin: 0 0 30px 78px; /* 吹き出し（左）の上下左右の余白を狭く */
+  }
+  /* 吹き出し（右） */
+  .sb-side-right {
+    margin: 0 78px 30px 0; /* 吹き出し（右）の上下左右の余白を狭く */
+  }
+  /* 吹き出し内のテキスト */
+  .sb-txt {
+    padding: 12px; /* 吹き出し内の上下左右の余白を-6px */
+  }
+}
+
+/* チャットメッセージのスタイル */  
+>>>>>>> origin/main
 .says {
   background-color: #f2f2f2;
   border-radius: 5px;
@@ -162,7 +286,12 @@
   font-size: 12px;
   color: #666;
 }
+<<<<<<< HEAD
 
+=======
+  
+  /* チャットフォームのスタイル */
+>>>>>>> origin/main
 .chat-form-box {
   margin-top: 20px;
 }

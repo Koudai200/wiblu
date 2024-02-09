@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema[7.0].define(version: 2023_07_21_044734) do
+=======
+ActiveRecord::Schema[7.0].define(version: 2023_05_09_022635) do
+>>>>>>> origin/main
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -39,6 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_21_044734) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+<<<<<<< HEAD
   create_table "applies", force: :cascade do |t|
     t.integer "user_id"
     t.integer "music_id"
@@ -51,6 +56,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_21_044734) do
     t.integer "video_id"
   end
 
+=======
+>>>>>>> origin/main
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.integer "movie_id", null: false
@@ -96,7 +103,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_21_044734) do
     t.integer "music_id"
     t.integer "movie_id"
     t.integer "image_id"
+<<<<<<< HEAD
     t.integer "video_id"
+=======
+>>>>>>> origin/main
   end
 
   create_table "messages", force: :cascade do |t|
@@ -117,7 +127,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_21_044734) do
     t.string "video"
     t.integer "user_id"
     t.text "content"
+<<<<<<< HEAD
     t.boolean "approval"
+=======
+>>>>>>> origin/main
   end
 
   create_table "musics", force: :cascade do |t|
@@ -135,7 +148,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_21_044734) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "body"
+<<<<<<< HEAD
     t.text "title"
+=======
+>>>>>>> origin/main
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -151,6 +167,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_21_044734) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "text"
+<<<<<<< HEAD
     t.string "reset_password_token"
     t.datetime "reset_password_token_expires_at"
     t.datetime "reset_password_email_sent_at"
@@ -166,6 +183,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_21_044734) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+=======
+>>>>>>> origin/main
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

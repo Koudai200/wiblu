@@ -70,4 +70,8 @@ class PostsController < ApplicationController
     end
     
   end
+<<<<<<< HEAD
   
+=======
+  
+>>>>>>> origin/main

@@ -5,7 +5,11 @@
 #   gem "sqlite3"
 #
 default: &default
+<<<<<<< HEAD
   adapter: sqlite3
+=======
+  adapter: mysql2
+>>>>>>> origin/main
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
@@ -20,6 +24,7 @@ test:
   <<: *default
   database: db/test.sqlite3
 
+<<<<<<< HEAD
 production:
   adapter: mysql2
   encoding: utf8
@@ -27,4 +32,16 @@ production:
   database: libeu_app_production
   username: libeu
   password: Kou4657422w2YbCH2-
+=======
+
+production:
+  <<: *default
+  database: db/production.sqlite3
+  adapter: sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+  charset: utf8mb4
+  username: ec2-user
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+>>>>>>> origin/main
   socket: /var/lib/mysql/mysql.sock

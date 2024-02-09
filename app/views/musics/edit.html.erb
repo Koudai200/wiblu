@@ -1,6 +1,7 @@
 <div class="main posts-new">
   <div class="container">
     <h1 class="form-heading">編集</h1>
+<<<<<<< HEAD
     <div class="form">
       <%= form_for @music, url: music_path(@music), method: :patch do |f| %>
         <div class="form-body">
@@ -30,4 +31,35 @@
       </div>
     </a>
   </div>
+=======
+  <div class="form">
+    <%= form_for @music, url: music_path(@music), method: :patch do |f| %>
+      <div class="form-body">
+        <% @music.errors.full_messages.each do |message| %>
+          <div class="form-error">
+            <%= message %>
+          </div>
+        <% end %>
+        <audio src="<%= @music.file_url %>" controls="">
+          <a href="<%= @music.file_url %>" download>ダウンロード</a>
+        </audio>
+        <div class="form-group">
+          <%= f.label :body, "タイトル" %>
+          <%= f.text_area :body, rows: 2, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :content, "概要欄" %>
+          <%= f.text_area :content, rows: 5, class: "form-control" %>
+        </div>
+        <%= f.submit "保存", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+  <a href="#" onclick="confirmAndDelete(<%= @music.id %>, 'music')">
+    <div class="destroy">
+      <%= "投稿削除" %>
+    </div>
+  </a>
+</div>
+>>>>>>> origin/main
 </div>
