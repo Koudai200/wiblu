@@ -9,6 +9,9 @@ set :linked_files, fetch(:linked_files, []).push('config/secrets.yml')
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 set :keep_releases, 5
 
+set :ssh_options, { forward_agent: true, paranoid: true, keys:
+"~/.ssh/github/id_rsa" }
+
 set :rbenv_ruby, '3.2.3'
 set :log_level, :debug
 namespace :deploy do
@@ -30,7 +33,7 @@ namespace :deploy do
                   sql = "CREATE DATABASE IF NOT EXISTS libeu_app_production;"
                   # クエリの実行。
                 # userとpasswordはmysqlの設定に合わせて
-                execute "mysql --user=libeu --password=Kou4657422w2YbCH2- -e '#{sql}'"
+                execute "mysql --user=root --password=Kou4657422w2YbCH2- -e '#{sql}'"
 
         end
     end
