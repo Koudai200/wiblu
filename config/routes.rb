@@ -94,6 +94,8 @@ Rails.application.routes.draw do
 
   resources :password_resets, only: [:new, :create, :edit, :update]
 
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
+
   resources :messages, only: [:create]
   get "rooms/index" => "rooms#index"
   get "rooms/:id" => "rooms#show"
