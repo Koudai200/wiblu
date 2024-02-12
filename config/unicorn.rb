@@ -5,7 +5,6 @@ root_path = File.expand_path('../../', __FILE__)
 worker_processes 2
 
 # アプリケーションの設置されているディレクトリを指定
-<<<<<<< HEAD
 working_directory root_path
 
 # プロセスIDの保存先を指定
@@ -19,21 +18,6 @@ stderr_path "#{root_path}/log/unicorn.stderr.log"
 
 # 通常のログを記録するファイルを指定
 stdout_path "#{root_path}/log/unicorn.stdout.log"
-=======
-working_directory "/var/www/rails/wiblu"
-
-# プロセスIDの保存先を指定
-pid "/var/www/rails/wiblu/tmp/pids/unicorn.pid"
-
-# ポート番号を指定
-listen "/var/www/rails/wiblu/tmp/sockets/unicorn.sock"
-
-# エラーのログを記録するファイルを指定
-stderr_path "/var/www/rails/wiblu/log/unicorn.stderr.log"
-
-# 通常のログを記録するファイルを指定
-stdout_path "/var/www/rails/wiblu/log/unicorn.stdout.log"
->>>>>>> origin/main
 
 #応答時間を待つ上限時間を設定
 timeout 30
@@ -68,8 +52,4 @@ end
 
 after_fork do |_server, _worker|
   defined?(ActiveRecord::Base) && ActiveRecord::Base.establish_connection
-<<<<<<< HEAD
 end
-=======
-end
->>>>>>> origin/main
