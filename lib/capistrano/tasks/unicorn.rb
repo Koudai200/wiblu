@@ -15,12 +15,12 @@ namespace :unicorn do
   
   #unicornを停止させるメソッド
     def stop_unicorn
-      execute :kill, "-s QUIT $(< #{fetch(:unicorn_pid)})"
+      execute :kill, "-s QUIT $(cat #{fetch(:unicorn_pid)})"
     end
   
   #unicornを再起動するメソッド
     def reload_unicorn
-      execute :kill, "-s USR2 $(< #{fetch(:unicorn_pid)})"
+      execute :kill, "-s USR2 $(cat #{fetch(:unicorn_pid)})"
     end
   
   #unicronを強制終了するメソッド
