@@ -94,9 +94,11 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   # 以下追記
   gem 'capistrano'
+  gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"

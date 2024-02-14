@@ -9,10 +9,7 @@
 server '160.251.210.130',
   user: 'libeu',
   roles: %w{app db web}, 
-  port: 22 
-
-set :ssh_options, 
-  keys: '~/.ssh/conoha_libeu/id_rsa'
+  port: 22
 # role-based syntax
 # ==================
 
