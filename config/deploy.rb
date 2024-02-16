@@ -3,6 +3,7 @@ lock "~> 3.18.0"
 
 set :application, "Libeu_app"
 set :repo_url, "git@github.com:Koudai200/wiblu.git"
+set :branch, 'main'
 
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
 
