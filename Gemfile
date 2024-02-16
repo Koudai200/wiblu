@@ -79,6 +79,9 @@ end
 group :production, :staging do
   gem 'mysql2'
   gem 'unicorn'
+  gem 'ed25519', '~> 1.2'
+  gem 'bcrypt_pbkdf', '~> 1.0'
+
 end
 
 group :development do
