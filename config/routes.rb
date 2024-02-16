@@ -58,11 +58,7 @@ Rails.application.routes.draw do
 
   post "movies/:id/update" => "movies#update", as: "update_movie"
   get "movies/:id/destroy" => "movies#destroy", as: "destroy_movie"
-<<<<<<< HEAD
 
-=======
-  
->>>>>>> origin/main
   resources :movies do
     resources :movie_events, only: [:index]
   end
