@@ -15,6 +15,8 @@ set :keep_releases, 5
 set :rbenv_type, :user
 set :rbenv_ruby, '3.2.3'
 
+set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
+
 # デプロイのタスク
 namespace :deploy do
 
