@@ -17,6 +17,17 @@ set :rbenv_ruby, '3.2.3'
 
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 
+namespace :unicorn do
+  desc 'Start Unicorn'
+  task :start do
+    on roles(:app) do
+      within current_path do
+        execute :bundle, :exec, :unicorn, "-c #{shared_path}/config/unicorn.rb -E #{fetch(:rails_env)} -D"
+      end
+    end
+  end
+end
+
 # デプロイのタスク
 namespace :deploy do
 
@@ -49,4 +60,5 @@ namespace :deploy do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
     end
   end
+  
 end
