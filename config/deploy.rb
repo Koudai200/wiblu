@@ -35,7 +35,7 @@ namespace :deploy do
           sql = "CREATE DATABASE IF NOT EXISTS libeu_app_production;"
           # クエリの実行。
           # userとpasswordはmysqlの設定に合わせて
-          execute "mysql --user=root --password=Kou4657422w2YbCH2-'#{sql}'"
+          execute "mysql --user=root --password='Kou4657422w2YbCH2-' -e '#{sql}'"
         end
       end
     end
