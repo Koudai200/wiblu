@@ -5,19 +5,19 @@ root_path = File.expand_path('../../', __FILE__)
 worker_processes 2
 
 # アプリケーションの設置されているディレクトリを指定
-working_directory "#{root_path}/current"
+working_directory root_path
 
-# プロセスIDの保存先を指定（shared内に変更）
-pid "#{root_path}/shared/tmp/pids/unicorn.pid"
+# プロセスIDの保存先を指定
+pid "#{root_path}/current/tmp/pids/unicorn.pid"
 
-# ポート番号を指定（shared内に変更）
-listen "#{root_path}/shared/tmp/sockets/unicorn.sock"
+# ポート番号を指定
+listen "#{root_path}/current/tmp/sockets/unicorn.sock"
 
-# エラーのログを記録するファイルを指定（shared内に変更）
-stderr_path "#{root_path}/shared/log/unicorn.stderr.log"
+# エラーのログを記録するファイルを指定
+stderr_path "#{root_path}/current/log/unicorn.stderr.log"
 
-# 通常のログを記録するファイルを指定（shared内に変更）
-stdout_path "#{root_path}/shared/log/unicorn.stdout.log"
+# 通常のログを記録するファイルを指定
+stdout_path "#{root_path}/current/log/unicorn.stdout.log"
 
 #応答時間を待つ上限時間を設定
 timeout 30
