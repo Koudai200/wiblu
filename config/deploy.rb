@@ -5,32 +5,46 @@ set :application, "Libeu_app"
 set :repo_url, "git@github.com:Koudai200/wiblu.git"
 set :branch, 'main'
 
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
+set :deploy_to, '/var/www/libeu_app'
+set :linked_files, fetch(:linked_files, []).push('config/secrets.yml')
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 
-# SSH接続設定
-set :ssh_options, {
-  auth_methods: ['publickey'], 
-  keys: ['~/.ssh/conoha_libeu/id_rsa'] 
-}
-
-# 保存しておく世代の設定
 set :keep_releases, 5
 
 # rbenvの設定
 set :rbenv_type, :user
 set :rbenv_ruby, '3.2.3'
 
-# ここからUnicornの設定
-# Unicornのプロセスの指定
-set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
-
-# Unicornの設定ファイルの指定
-set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
-
-# Unicornを再起動するための記述
-after 'deploy:publishing', 'deploy:restart'
+# デプロイのタスク
 namespace :deploy do
+
+  # unicornの再起動
+  desc 'Restart application'
   task :restart do
     invoke 'unicorn:restart'
+  end
+
+  # データベースの作成
+  desc 'Create database'
+  task :db_create do
+    on roles(:db) do |host|
+      with rails_env: fetch(:rails_env) do
+        within current_path do
+          # データベース作成のsqlセット
+          # データベース名はdatabase.ymlに設定した名前で
+          sql = "CREATE DATABASE IF NOT EXISTS libeu_app_production;"
+          # クエリの実行。
+          # userとpasswordはmysqlの設定に合わせて
+          execute "mysql --user=root --password=Kou4657422w2YbCH2-'#{sql}'"
+        end
+      end
+    end
+  end
+
+  after :publishing, :restart
+
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+    end
   end
 end

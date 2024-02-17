@@ -6,10 +6,9 @@
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
-server '160.251.210.130',
-  user: 'libeu',
-  roles: %w{app db web}, 
-  port: 22
+server '160.251.210.130', user: 'libeu', roles: %w{app db web}, port: 22
+
+set :ssh_options, keys: '~/.ssh/conoha_hoge/id_rsa'
 # role-based syntax
 # ==================
 
