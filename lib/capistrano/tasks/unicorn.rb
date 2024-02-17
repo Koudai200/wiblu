@@ -12,19 +12,19 @@ namespace :unicorn do
 
   def stop_unicorn
     on roles(:app) do
-      execute :kill, "-s QUIT $(< #{fetch(:unicorn_pid)})"
+      execute :kill, "-s QUIT $(cat #{fetch(:unicorn_pid)})"
     end
   end
 
   def reload_unicorn
     on roles(:app) do
-      execute :kill, "-s USR2 $(< #{fetch(:unicorn_pid)})"
+      execute :kill, "-s USR2 $(cat #{fetch(:unicorn_pid)})"
     end
   end
 
   def force_stop_unicorn
     on roles(:app) do
-      execute :kill, "$(< #{fetch(:unicorn_pid)})"
+      execute :kill, "$(cat #{fetch(:unicorn_pid)})"
     end
   end
 
