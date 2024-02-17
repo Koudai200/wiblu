@@ -8,7 +8,7 @@
 # server "db.example.com", user: "deploy", roles: %w{db}
 server '160.251.210.130', user: 'libeu', roles: %w{app db web}, port: 22
 
-set :ssh_options, keys: '~/.ssh/conoha_hoge/id_rsa'
+set :ssh_options, keys: '~/.ssh/conoha_libeu/id_rsa'
 # role-based syntax
 # ==================
 
