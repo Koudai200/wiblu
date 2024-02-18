@@ -14,6 +14,7 @@ set :keep_releases, 5
 # rbenvの設定
 set :rbenv_type, :user
 set :rbenv_ruby, '3.2.3'
+set :bundle_gemfile, '/var/www/libeu_app/current/Gemfile'
 
 # デプロイのタスク
 namespace :deploy do
