@@ -5,7 +5,7 @@ set :application, "Libeu_app"
 set :repo_url, "git@github.com:Koudai200/wiblu.git"
 set :branch, 'main'
 
-set :deploy_to, '/var/www/libeu_app'
+set :deploy_to, '/var/www/Libeu_app'
 set :linked_files, fetch(:linked_files, []).push('config/secrets.yml')
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 
@@ -14,7 +14,6 @@ set :keep_releases, 5
 # rbenvの設定
 set :rbenv_type, :user
 set :rbenv_ruby, '3.2.3'
-set :bundle_gemfile, '/var/www/libeu_app/current/Gemfile'
 
 # デプロイのタスク
 namespace :deploy do
