@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div class="main posts-new">
 <div class="container">
   <div class="form-heading">ミュージックビデオ</div>
@@ -39,46 +38,4 @@
     </div>
   </div>
 </div>
-=======
-<div class="main posts-new">
-<div class="container">
-  <div class="form-heading">ミュージックビデオ</div>
-
-    <%= form_with model: @video do |form| %>
-      <% if @video.errors.any? %>
-        <div style="color: red">
-          <h2><%= pluralize(video.errors.count, "error") %> prohibited this video from being saved:</h2>
-
-          <ul>
-            <% @video.errors.each do |error| %>
-              <li><%= error.full_message %></li>
-            <% end %>
-          </ul>
-
-        </div>
-      <% end %>
-    <% end %>
-
-  <div class="form">
-    <div class="form-body">
-      <%= form_with model: @video, local: true do |f| %>
-        <%= f.label :ミュージックビデオ %>
-        <%= f.file_field :video, accept: "video/*" %>
-      
-        <div>
-          <%= f.label :タイトル %>
-          <%= f.text_field :body, :size => 30 %>
-        </div>
-        <div>
-          <%= f.label :概要欄 %>
-          <%= f.text_area :content, :size => 300 %>
-        </div>
-        <div class="form-group">
-          <%= f.submit "投稿" %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</div>
->>>>>>> origin/main
 </div>

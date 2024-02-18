@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div class="main posts-index">
   <div class="post-container">
     <% @videos.each do |video| %>
@@ -32,38 +31,3 @@
     <% end %>
   </div>
 </div>
-=======
-<div class="main posts-index">
-  <div class="post-container">
-    <% @videos.each do |video| %>
-      <div class="posts-index-item">
-        <div class="post-left">
-          <img src="<%= "/user_images/#{video.user.image_name}" %>">
-        </div>
-        <div class="post-right">
-          <div class="post-user-name">
-            <%= link_to(video.user.name, "/users/#{video.user.id}") %>
-          </div>
-        </div>
-          <div class="movie-contents">
-            <%= video_tag(video.video.to_s, loop: true, autoplay: true, muted: true) %>
-            <%= link_to( video.body, "/videos/#{video.id}" ) %>
-          </div>
-
-        <div class="post-like">
-          <% if Like.find_by(user_id: @current_user.id, video_id: video.id) %>
-            <%= link_to("/likes/#{video.id}/video_destroy", method: :post, class: "like-button liked", data: { resource_id: video.id, resource_type: "video" }) do %>
-              <span class="fa fa-heart liked-btn"></span>
-            <% end %>
-          <% else %>
-            <%= link_to("/likes/#{video.id}/video_create", method: :post, class: "like-button unliked", data: { resource_id: video.id, resource_type: "video" }) do %>
-              <span class="fa fa-heart unliked-btn"></span>
-            <% end %>
-          <% end %>    
-          <%= Like.where(video_id: video.id).count %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-</div>
->>>>>>> origin/main

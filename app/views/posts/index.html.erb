@@ -20,11 +20,7 @@
         </div>
         <div class="post-like">
           <% if Like.find_by(user_id: @current_user.id, post_id: post.id) %>
-<<<<<<< HEAD
             <%= link_to(destroy_like_path(post.id),method: :post, class: "like-button liked", data: { resource_id: post.id, resource_type: "post" }) do %>
-=======
-            <%= link_to(destroy_like_path(post.id), method: :post, class: "like-button liked", data: { resource_id: post.id, resource_type: "post" }) do %>
->>>>>>> origin/main
               <span class="fa fa-heart liked-btn"></span>
             <% end %>
           <% else %>

@@ -21,21 +21,12 @@
           <%= image_tag("/user_images/#{message.user.image_name}") %>
         </div>
         <div class="icon-name icon-name-left"><%= message.user.name %></div>
-<<<<<<< HEAD
           <div class="sb-side sb-side-left">
             <div class="sb-txt sb-txt-left">
               <div class="syas">
                 <%= message.body %>
               </div>
             </div>
-=======
-        <div class="sb-side sb-side-left">
-          <div class="sb-txt sb-txt-left">
-            <div class="syas">
-              <%= message.body %>
-            </div>
-          </div>
->>>>>>> origin/main
           <div class="room-time">
             <%= message.created_at.strftime('%Y/%m/%d %H:%M') %>
           </div>
@@ -43,7 +34,6 @@
       </div>
       <!-- 吹き出し（左）の終わり -->
     <% end %>
-<<<<<<< HEAD
     <% end %>
     <div class="chat-form-box">
     <%= form_for @message do |f| %>
@@ -55,21 +45,5 @@
         </div>
       </div>
     <% end %>
-=======
-  <% end %>
-
-    <div class="chat-form-box">
-      <%= form_for @message do |f| %>
-        <div class="chat-form-group">
-            <%= f.text_field :body, placeholder: "メッセージを入力..." %>
-          <%= f.hidden_field :room_id, value: @room.id %>
-          <div class="send-button">
-            <%= f.submit "送信する" %>
-          </div>
-        </div>
-      <% end %>
-    </div>
-
->>>>>>> origin/main
   </div>
 </div>

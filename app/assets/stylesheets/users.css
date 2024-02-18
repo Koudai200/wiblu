@@ -15,11 +15,7 @@
 }
 
 .user-name {
-<<<<<<< HEAD
   margin: 20px 0 30px 20px;
-=======
-  margin: 13px 0 30px 20px;
->>>>>>> origin/main
   font-weight: 600;
   font-size: 15px;
   display: inline-block;
@@ -81,11 +77,7 @@
 
 .user-tabs {
   max-width: 600px;
-<<<<<<< HEAD
   margin: 40px 0;
-=======
-  margin: 40px auto;
->>>>>>> origin/main
   background-color: white;
   overflow: hidden;
   box-shadow: 0 2px 6px #c1ced7;
@@ -110,10 +102,6 @@
   color: #afb6bf;
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/main
 /* users/new, users/edit ================================ */
 .users-form input {
   margin-bottom: 15px;
@@ -142,8 +130,4 @@
 .destroy:hover {
   color: #fff;
   background: #f08080;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/main

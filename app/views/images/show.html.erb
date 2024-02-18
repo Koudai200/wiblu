@@ -37,12 +37,7 @@
         </div>
       <% end %>
     </div>
-<<<<<<< HEAD
-
-
-=======
-    </div>
->>>>>>> origin/main
+    
     <% if @image.user_id != @current_user.id %>
       <div class="destroy">
         <% if Apply.find_by(request_id: @image.user_id, image_id: @image.id) %>

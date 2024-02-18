@@ -2,11 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user, {only: [:index, :show, :edit, :update, :destroy]}
   before_action :forbid_login_user, {only: [:new, :create, :login_form, :login]}
   before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> origin/main
   def index
     @users = User.all
   end
@@ -40,11 +36,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
-<<<<<<< HEAD
-  
-=======
-    
->>>>>>> origin/main
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -56,11 +48,6 @@ class UsersController < ApplicationController
       render :new
     end
   end
-<<<<<<< HEAD
-  
-  
-=======
->>>>>>> origin/main
     
   def edit
     @user = User.find_by(id: params[:id])
@@ -120,13 +107,9 @@ class UsersController < ApplicationController
       redirect_to("/posts/index")
     end
   end
-<<<<<<< HEAD
+
 
   def destroy
-=======
-  
-    def destroy
->>>>>>> origin/main
     @user = User.find_by(id: params[:id])
     if @user.destroy
       flash[:notice] = "アカウントを削除しました"
@@ -137,20 +120,9 @@ class UsersController < ApplicationController
     end
   end
   
-<<<<<<< HEAD
-
   private
-=======
-    private
->>>>>>> origin/main
   
   def user_params
     params.require(:user).permit(:name, :email, :password, :agreement)
   end
-<<<<<<< HEAD
-
 end
-=======
-  
-end
->>>>>>> origin/main

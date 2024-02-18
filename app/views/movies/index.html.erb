@@ -14,10 +14,6 @@
             <%= video_tag(movie.video.to_s, loop: true, autoplay: true, muted: true) %>
             <%= link_to( movie.body, "/movies/#{movie.id}" ) %>
           </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/main
         <div class="post-like">
           <% if Like.find_by(user_id: @current_user.id, movie_id: movie.id) %>
             <%= link_to("/likes/#{movie.id}/movie_destroy", method: :post, class: "like-button liked", data: { resource_id: movie.id, resource_type: "movie" }) do %>

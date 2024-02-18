@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div class="main posts-show">
   <div class="container">
     <div class="images-show-item">
@@ -60,67 +59,4 @@
         <% end %>
       </div>
     <% end %>
-=======
-<div class="main posts-show">
-  <div class="container">
-    <div class="images-show-item">
-      <div class="post-left">
-        <%= image_tag("/user_images/#{h(@user.image_name)}") %>
-      </div>
-      <div class="post-right">
-        <div class="post-user-name">
-          <%= link_to(@user.name, "/users/#{@user.id}") %>
-        </div>
-      </div>
-      <div class="movie-contents">
-        <video loop autoplay muted controls controlslist="nodownload">
-          <source src="<%= @video.video.to_s %>" type="video/mp4">
-        </video>
-        <div class="image-body">
-          <p>タイトル</p>
-          <div><%= @video.body %></div>
-          <p>概要欄</p>
-          <div><%= @video.content %></div>
-        </div>
-      </div>
-      <div class="post-time">
-      <%= @video.created_at.strftime("%Y年%m月%d日 %H:%M:%S") %>
-      </div>
-
-      <% if Like.find_by(user_id: @current_user.id, video_id: @video.id) %>
-        <%= link_to("/likes/#{@video.id}/video_destroy", method: :post, class: "like-button liked", data: { resource_id: @video.id, resource_type: "video" }) do %>
-          <span class="fa fa-heart liked-btn"></span>
-        <% end %>
-      <% else %>
-        <%= link_to("/likes/#{@video.id}/video_create", method: :post, class: "like-button unliked", data: { resource_id: @video.id, resource_type: "video" }) do %>
-          <span class="fa fa-heart unliked-btn"></span>
-        <% end %>
-      <% end %>
-
-      <%= Like.where(video_id: @video.id).count %>
-      <% if @video.user_id == @current_user.id %>
-        <div class="post-menus">
-          <%= link_to("編集", "/videos/#{@video.id}/edit") %>
-        </div>
-      <% end %>
-    </div>
-    <% if @video.user_id != @current_user.id %>
-      <div class="destroy">
-        <% if Apply.find_by(request_id: @video.user_id, video_id: @video.id) %>
-          <%= link_to("利用可能", "/applies/#{@user.id}/index") %>
-        <% elsif Apply.find_by(video_id: @video.id) %>
-          <%= "申請中" %>
-        <% else %>
-          <% if flash[:success] == "申請が送信されました" %>
-            <%= "申請中" %>
-          <% else %>
-            <%= form_for @apply, url: "/videos/#{@video.id}/applies", method: :post do |f| %>
-              <%= f.hidden_field :video_id, value: @video.id %>
-              <%= f.submit "申請する" %>
-            <% end %>
-          <% end %>
-        <% end %>
-      </div>
-    <% end %>
->>>>>>> origin/main
 </div>

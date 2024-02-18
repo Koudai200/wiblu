@@ -67,8 +67,6 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
-<<<<<<< HEAD
-=======
 // JavaScriptでハンバーガーメニューを制御
 document.addEventListener("DOMContentLoaded", function () {
   const navbarToggle = document.querySelector(".navbar-toggle");
@@ -86,7 +84,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
->>>>>>> origin/main
 function confirmAndDelete(itemId, itemType) {
   const itemData = {
     post: {
@@ -128,8 +125,4 @@ function confirmAndDelete(itemId, itemType) {
   if (confirm(confirmMessage)) {
     window.location.href = url;
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/main

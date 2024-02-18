@@ -35,10 +35,6 @@ class MoviesController < ApplicationController
 
   def edit
   end
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/main
   
   def update
     if @movie.update(movie_params)
@@ -47,11 +43,8 @@ class MoviesController < ApplicationController
     else
       render("movies/edit")
     end
-<<<<<<< HEAD
   end  
-=======
-  end
->>>>>>> origin/main
+
 
   def destroy
     @movie.destroy
@@ -74,8 +67,4 @@ class MoviesController < ApplicationController
       redirect_to("/movies/index")
     end
   end
-<<<<<<< HEAD
 end
-=======
-end
->>>>>>> origin/main
