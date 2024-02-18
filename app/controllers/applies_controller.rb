@@ -1,13 +1,8 @@
 class AppliesController < ApplicationController
     before_action :authenticate_user
     before_action :ensure_correct_user,
-<<<<<<< HEAD
     {only: [:post_update, :music_update, :movie_update, :image_update, :video_update,
             :post_destroy, :music_destroy, :movie_destroy, :image_destroy, :video_destroy]}
-=======
-    {only: [:post_update, :music_update, :movie_update, :image_update,
-            :post_destroy, :music_destroy, :movie_destroy, :image_destroy]}
->>>>>>> origin/main
 
     def post_create
         @apply = Apply.new(post_id: apply_params[:post_id])
@@ -138,11 +133,7 @@ class AppliesController < ApplicationController
         flash[:notice] = "ダウンロードの許可失敗しました"
         redirect_to("/applies/#{@current_user.id}/index")
       end
-<<<<<<< HEAD
-  end
-=======
     end
->>>>>>> origin/main
 
     def post_destroy
         @apply = Apply.find_by(post_id: apply_params[:post_id])
@@ -198,12 +189,7 @@ class AppliesController < ApplicationController
         flash[:alert] = "申請の拒否に失敗しました"
       end
       redirect_to("/applies/#{@current_user.id}/index")
-<<<<<<< HEAD
-  end
-
-=======
     end
->>>>>>> origin/main
   
     def index
       @applies = Apply.all.order(created_at: :desc)
@@ -224,8 +210,3 @@ class AppliesController < ApplicationController
       params.require(:apply).permit(:post_id, :movie_id,:image_id,:music_id, :video_id)
     end
   end
-<<<<<<< HEAD
-  
-=======
-  
->>>>>>> origin/main
