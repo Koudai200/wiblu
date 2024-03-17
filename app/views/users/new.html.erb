@@ -24,7 +24,9 @@
             <%= f.check_box :agreement, class: "form-check-input" %>
             <%= link_to("利用規約", "/riyoukiyaku") %>と<%= link_to("プライバシーポリシー", "/puraibasiporisi") %>に同意する
           <% end %>
-          <%= f.submit "新規登録", class: "btn btn-large btn-primary" %>
+          <div class="form-group">
+            <%= f.submit "新規登録", class: "btn btn-large btn-primary" %>
+          </div>
         <% end %>
       </div>
     </div>
